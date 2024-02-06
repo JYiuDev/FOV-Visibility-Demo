@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dttxw7s7ege3h"]
+
+[sub_resource type="Gradient" id="Gradient_nwkdo"]
+interpolation_mode = 1
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wh320"]
+gradient = SubResource("Gradient_nwkdo")
+fill = 1
+
+[node name="GameScene" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_wh320")
