@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1707460263
+::res://::1707546950
 icon.svg::CompressedTexture2D::8079069780218303267::1707116859::1707116863::1::::<><>::
 ::res://Import_Assets/::1707368822
 ::res://Import_Assets/kenney_1-bit-pack/::1707374914
@@ -21,7 +21,7 @@ monochrome-transparent.png::CompressedTexture2D::5503475240381563241::1636499094
 monochrome-transparent_packed.png::CompressedTexture2D::2533711631257357561::1636499094::1707374914::1::::<><>::
 monochrome.png::CompressedTexture2D::172806220522195460::1636499093::1707374914::1::::<><>::
 monochrome_packed.png::CompressedTexture2D::3067082800859887857::1636499094::1707374914::1::::<><>::
-::res://Scenes/::1707405989
-game_scene.tscn::PackedScene::8533510745841795007::1707405989::0::1::::<><>::uid://dsqjhxo5opdq2::::res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored.png
-::res://TileSets/::1707389834
-BG_FloorWalls.tres::TileSet::846431557896789594::1707389834::0::1::::<><>::uid://c2bfjy0036v8d::::res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored_packed.png
+::res://Scenes/::1707509986
+game_scene.tscn::PackedScene::8533510745841795007::1707509986::0::1::::<><>::uid://p1w303aovx23::::res://TileSets/Walls.tres
+::res://TileSets/::1707509986
+Walls.tres::TileSet::1107893608604078102::1707509986::0::1::::<><>::uid://c2bfjy0036v8d::::res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored_packed.png

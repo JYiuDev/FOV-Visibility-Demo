@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dpqf5ourprosq"]
+
+[node name="PlayerCharacter" type="Node2D"]
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
