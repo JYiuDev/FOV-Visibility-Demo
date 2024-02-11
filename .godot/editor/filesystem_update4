@@ -1,4 +1,4 @@
 res://Scenes/game_scene.tscn
-res://TileSets/Walls.tres
-res://Shaders/white_shader.gdshader
 res://Characters/Player.tscn
+res://TileSets/Walls.tres
+res://Characters/Player.gd
