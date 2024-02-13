@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dttxw7s7ege3h"]
+[gd_scene load_steps=14 format=3 uid="uid://dttxw7s7ege3h"]
 
+[ext_resource type="Shader" path="res://Shaders/maskview_shader.gdshader" id="1_ni1mj"]
 [ext_resource type="TileSet" uid="uid://p1w303aovx23" path="res://TileSets/Walls.tres" id="1_onm7x"]
 [ext_resource type="Shader" path="res://Shaders/white_shader.gdshader" id="2_12x55"]
+[ext_resource type="PackedScene" uid="uid://dpqf5ourprosq" path="res://Characters/Player.tscn" id="3_m2g75"]
 
 [sub_resource type="Gradient" id="Gradient_nwkdo"]
 interpolation_mode = 1
@@ -17,6 +19,15 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dgvh5"]
 viewport_path = NodePath("VisibilityViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p1s7y"]
+viewport_path = NodePath("LitView")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nic7k"]
+shader = ExtResource("1_ni1mj")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_amos5"]
+viewport_path = NodePath("LitView")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r5d3m"]
 shader = ExtResource("2_12x55")
@@ -35,11 +46,6 @@ fill_from = Vector2(0.5, 0.5)
 
 [node name="GameScene" type="Node"]
 
-[node name="Background" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(47.25, 38.25)
-scale = Vector2(95.5, 77.5)
-
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
 position = Vector2(3, 8)
@@ -48,30 +54,59 @@ blend_mode = 1
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_wh320")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="debug_visiblity" type="Sprite2D" parent="."]
+position = Vector2(84, 108)
+texture = SubResource("ViewportTexture_dgvh5")
+
+[node name="debug_litview" type="Sprite2D" parent="."]
 visible = false
-tile_set = ExtResource("1_onm7x")
-format = 2
-layer_0/tile_data = PackedInt32Array(1572913, 1, 16, 1638449, 1, 17, 1703985, 1, 17, 1769521, 1, 17, 1835057, 1, 17, 1900593, 1, 18, 1572914, 65537, 16, 1638450, 3, 0, 1703986, 3, 0, 1769522, 3, 0, 1835058, 3, 0, 1900594, 65537, 18, 1572915, 65537, 16, 1638451, 3, 0, 1703987, 1, 17, 1769523, 3, 0, 1835059, 3, 0, 1900595, 65537, 18, 1572916, 65537, 16, 1638452, 3, 0, 1703988, 3, 0, 1769524, 3, 0, 1835060, 3, 0, 1900596, 65537, 18, 1572917, 65537, 16, 1638453, 3, 0, 1703989, 3, 0, 1769525, 3, 0, 1835061, 3, 0, 1900597, 65537, 18, 1572918, 131073, 16, 1638454, 131073, 17, 1703990, 131073, 17, 1769526, 131073, 17, 1835062, 131073, 17, 1900598, 131073, 18)
+position = Vector2(324, 106)
+texture = SubResource("ViewportTexture_p1s7y")
+
+[node name="litview_sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_nic7k")
+position = Vector2(174, 2)
+texture = SubResource("ViewportTexture_p1s7y")
+centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(129, 271)
-scale = Vector2(3, 3)
-texture = SubResource("ViewportTexture_dgvh5")
+texture = SubResource("ViewportTexture_amos5")
+centered = false
+
+[node name="LitView" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(384, 216)
+render_target_update_mode = 4
+
+[node name="TileMap" type="TileMap" parent="LitView"]
+tile_set = ExtResource("1_onm7x")
+format = 2
+layer_0/tile_data = PackedInt32Array(196617, 1, 16, 262153, 1, 17, 327689, 1, 17, 393225, 1, 17, 458761, 1, 17, 524297, 1, 18, 196618, 65537, 16, 262154, 3, 0, 327690, 3, 0, 393226, 3, 0, 458762, 3, 0, 524298, 65537, 18, 196619, 65537, 16, 262155, 3, 0, 327691, 196609, 18, 393227, 3, 0, 458763, 3, 0, 524299, 65537, 18, 196620, 65537, 16, 262156, 3, 0, 327692, 3, 0, 393228, 3, 0, 458764, 3, 0, 524300, 65537, 18, 196621, 65537, 16, 262157, 3, 0, 327693, 3, 0, 393229, 3, 0, 458765, 3, 0, 524301, 65537, 18, 196622, 131073, 16, 262158, 131073, 17, 327694, 131073, 17, 393230, 131073, 17, 458766, 131073, 17, 524302, 131073, 18)
+
+[node name="PlayerCharacter" parent="LitView" instance=ExtResource("3_m2g75")]
+position = Vector2(203, 109)
+
+[node name="PlayerSprite" parent="LitView/PlayerCharacter" index="0"]
+texture_filter = 1
+
+[node name="RemoteTransform2D" parent="LitView/PlayerCharacter/Visibility" index="0"]
+remote_path = NodePath("../../../../VisibilityViewport/PointLight2D2")
 
 [node name="VisibilityViewport" type="SubViewport" parent="."]
 transparent_bg = true
-size = Vector2i(1600, 900)
+size = Vector2i(384, 216)
 render_target_update_mode = 4
 
 [node name="VisibiltyMap" type="TileMap" parent="VisibilityViewport"]
 material = SubResource("ShaderMaterial_r5d3m")
 tile_set = ExtResource("1_onm7x")
 format = 2
-layer_0/tile_data = PackedInt32Array(1572913, 1, 16, 1638449, 1, 17, 1703985, 1, 17, 1769521, 1, 17, 1835057, 1, 17, 1900593, 1, 18, 1572914, 65537, 16, 1638450, 3, 0, 1703986, 3, 0, 1769522, 3, 0, 1835058, 3, 0, 1900594, 65537, 18, 1572915, 65537, 16, 1638451, 3, 0, 1703987, 1, 17, 1769523, 3, 0, 1835059, 3, 0, 1900595, 65537, 18, 1572916, 65537, 16, 1638452, 3, 0, 1703988, 3, 0, 1769524, 3, 0, 1835060, 3, 0, 1900596, 65537, 18, 1572917, 65537, 16, 1638453, 3, 0, 1703989, 3, 0, 1769525, 3, 0, 1835061, 3, 0, 1900597, 65537, 18, 1572918, 131073, 16, 1638454, 131073, 17, 1703990, 131073, 17, 1769526, 131073, 17, 1835062, 131073, 17, 1900598, 131073, 18)
+layer_0/tile_data = PackedInt32Array(196617, 1, 16, 262153, 1, 17, 327689, 1, 17, 393225, 1, 17, 458761, 1, 17, 524297, 1, 18, 196618, 65537, 16, 262154, 3, 0, 327690, 3, 0, 393226, 3, 0, 458762, 3, 0, 524298, 65537, 18, 196619, 65537, 16, 262155, 3, 0, 327691, 1, 17, 393227, 3, 0, 458763, 3, 0, 524299, 65537, 18, 196620, 65537, 16, 262156, 3, 0, 327692, 3, 0, 393228, 3, 0, 458764, 3, 0, 524300, 65537, 18, 196621, 65537, 16, 262157, 3, 0, 327693, 3, 0, 393229, 3, 0, 458765, 3, 0, 524301, 65537, 18, 196622, 131073, 16, 262158, 131073, 17, 327694, 131073, 17, 393230, 131073, 17, 458766, 131073, 17, 524302, 131073, 18)
 
 [node name="PointLight2D2" type="PointLight2D" parent="VisibilityViewport"]
-position = Vector2(836, 446)
+position = Vector2(203, 109)
 blend_mode = 1
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_7dapb")
+
+[editable path="LitView/PlayerCharacter"]

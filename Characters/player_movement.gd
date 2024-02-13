@@ -1,4 +1,7 @@
 extends CharacterBody2D
+"""
+Handle player movement
+"""
 
 @export var speed = 50
 
