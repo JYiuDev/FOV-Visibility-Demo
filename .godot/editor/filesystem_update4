@@ -1,6 +1,4 @@
-res://Characters/Player.tscn
-res://TileSets/Walls.tres
-res://Characters/player_movement.gd
 res://Scenes/game_scene.tscn
-res://Characters/Visibility.gd
 res://Shaders/maskview_shader.gdshader
+res://TileSets/Walls.tres
+res://Characters/Player.tscn

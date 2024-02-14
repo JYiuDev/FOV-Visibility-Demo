@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dttxw7s7ege3h"]
+[gd_scene load_steps=17 format=3 uid="uid://dttxw7s7ege3h"]
 
 [ext_resource type="Shader" path="res://Shaders/maskview_shader.gdshader" id="1_ni1mj"]
 [ext_resource type="TileSet" uid="uid://p1w303aovx23" path="res://TileSets/Walls.tres" id="1_onm7x"]
 [ext_resource type="Shader" path="res://Shaders/white_shader.gdshader" id="2_12x55"]
+[ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="3_5m1bo"]
 [ext_resource type="PackedScene" uid="uid://dpqf5ourprosq" path="res://Characters/Player.tscn" id="3_m2g75"]
 
 [sub_resource type="Gradient" id="Gradient_nwkdo"]
@@ -23,18 +24,26 @@ viewport_path = NodePath("VisibilityViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_p1s7y"]
 viewport_path = NodePath("LitView")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_7p0js"]
+viewport_path = NodePath("VisibilityViewport")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nic7k"]
+resource_local_to_scene = true
 shader = ExtResource("1_ni1mj")
+shader_parameter/mask_texture = SubResource("ViewportTexture_7p0js")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_amos5"]
 viewport_path = NodePath("LitView")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r5d3m"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0k7rh"]
+radius = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxhkr"]
 shader = ExtResource("2_12x55")
 
 [sub_resource type="Gradient" id="Gradient_66pl4"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.673653)
+offsets = PackedFloat32Array(0, 0.275862)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_7dapb"]
@@ -55,21 +64,21 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_wh320")
 
 [node name="debug_visiblity" type="Sprite2D" parent="."]
-position = Vector2(84, 108)
+position = Vector2(49, 62)
 texture = SubResource("ViewportTexture_dgvh5")
 
 [node name="debug_litview" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(324, 106)
+position = Vector2(50, 159)
 texture = SubResource("ViewportTexture_p1s7y")
 
 [node name="litview_sprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_nic7k")
-position = Vector2(174, 2)
 texture = SubResource("ViewportTexture_p1s7y")
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-145, 51)
 texture = SubResource("ViewportTexture_amos5")
 centered = false
 
@@ -81,7 +90,18 @@ render_target_update_mode = 4
 [node name="TileMap" type="TileMap" parent="LitView"]
 tile_set = ExtResource("1_onm7x")
 format = 2
-layer_0/tile_data = PackedInt32Array(196617, 1, 16, 262153, 1, 17, 327689, 1, 17, 393225, 1, 17, 458761, 1, 17, 524297, 1, 18, 196618, 65537, 16, 262154, 3, 0, 327690, 3, 0, 393226, 3, 0, 458762, 3, 0, 524298, 65537, 18, 196619, 65537, 16, 262155, 3, 0, 327691, 196609, 18, 393227, 3, 0, 458763, 3, 0, 524299, 65537, 18, 196620, 65537, 16, 262156, 3, 0, 327692, 3, 0, 393228, 3, 0, 458764, 3, 0, 524300, 65537, 18, 196621, 65537, 16, 262157, 3, 0, 327693, 3, 0, 393229, 3, 0, 458765, 3, 0, 524301, 65537, 18, 196622, 131073, 16, 262158, 131073, 17, 327694, 131073, 17, 393230, 131073, 17, 458766, 131073, 17, 524302, 131073, 18)
+layer_0/tile_data = PackedInt32Array(196617, 1, 16, 262153, 1, 17, 327689, 1, 17, 393225, 1, 17, 458761, 1, 17, 524297, 1, 18, 196618, 65537, 16, 262154, 3, 0, 327690, 3, 0, 393226, 3, 0, 458762, 3, 0, 524298, 65537, 18, 196619, 65537, 16, 262155, 3, 0, 393227, 3, 0, 458763, 3, 0, 524299, 65537, 18, 196620, 65537, 16, 262156, 3, 0, 327692, 3, 0, 393228, 3, 0, 458764, 3, 0, 524300, 65537, 18, 196621, 65537, 16, 262157, 3, 0, 327693, 3, 0, 393229, 3, 0, 458765, 3, 0, 524301, 65537, 18, 196622, 131073, 16, 262158, 131073, 17, 327694, 131073, 17, 393230, 131073, 17, 458766, 131073, 17, 524302, 131073, 18, 327691, 196609, 18)
+
+[node name="Cat" type="CharacterBody2D" parent="LitView"]
+position = Vector2(171, 72)
+
+[node name="Sprite2D" type="Sprite2D" parent="LitView/Cat"]
+texture = ExtResource("3_5m1bo")
+region_enabled = true
+region_rect = Rect2(464, 112, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LitView/Cat"]
+shape = SubResource("CircleShape2D_0k7rh")
 
 [node name="PlayerCharacter" parent="LitView" instance=ExtResource("3_m2g75")]
 position = Vector2(203, 109)
@@ -98,10 +118,10 @@ size = Vector2i(384, 216)
 render_target_update_mode = 4
 
 [node name="VisibiltyMap" type="TileMap" parent="VisibilityViewport"]
-material = SubResource("ShaderMaterial_r5d3m")
+material = SubResource("ShaderMaterial_bxhkr")
 tile_set = ExtResource("1_onm7x")
 format = 2
-layer_0/tile_data = PackedInt32Array(196617, 1, 16, 262153, 1, 17, 327689, 1, 17, 393225, 1, 17, 458761, 1, 17, 524297, 1, 18, 196618, 65537, 16, 262154, 3, 0, 327690, 3, 0, 393226, 3, 0, 458762, 3, 0, 524298, 65537, 18, 196619, 65537, 16, 262155, 3, 0, 327691, 1, 17, 393227, 3, 0, 458763, 3, 0, 524299, 65537, 18, 196620, 65537, 16, 262156, 3, 0, 327692, 3, 0, 393228, 3, 0, 458764, 3, 0, 524300, 65537, 18, 196621, 65537, 16, 262157, 3, 0, 327693, 3, 0, 393229, 3, 0, 458765, 3, 0, 524301, 65537, 18, 196622, 131073, 16, 262158, 131073, 17, 327694, 131073, 17, 393230, 131073, 17, 458766, 131073, 17, 524302, 131073, 18)
+layer_0/tile_data = PackedInt32Array(196617, 1, 16, 262153, 1, 17, 327689, 1, 17, 393225, 1, 17, 458761, 1, 17, 524297, 1, 18, 196618, 65537, 16, 262154, 3, 0, 327690, 3, 0, 393226, 3, 0, 458762, 3, 0, 524298, 65537, 18, 196619, 65537, 16, 262155, 3, 0, 393227, 3, 0, 458763, 3, 0, 524299, 65537, 18, 196620, 65537, 16, 262156, 3, 0, 327692, 3, 0, 393228, 3, 0, 458764, 3, 0, 524300, 65537, 18, 196621, 65537, 16, 262157, 3, 0, 327693, 3, 0, 393229, 3, 0, 458765, 3, 0, 524301, 65537, 18, 196622, 131073, 16, 262158, 131073, 17, 327694, 131073, 17, 393230, 131073, 17, 458766, 131073, 17, 524302, 131073, 18, 327691, 196609, 18)
 
 [node name="PointLight2D2" type="PointLight2D" parent="VisibilityViewport"]
 position = Vector2(203, 109)
