@@ -1,31 +1,52 @@
-[gd_scene load_steps=7 format=3 uid="uid://cig60bblp5n7a"]
+[gd_scene load_steps=9 format=3 uid="uid://blfpq7iq5cakf"]
 
 [ext_resource type="Script" path="res://FOVMap.gd" id="1_4mfh2"]
 [ext_resource type="PackedScene" uid="uid://cuybenefcb3p6" path="res://Level_maps/visible_map_1.tscn" id="2_4om6q"]
-[ext_resource type="Material" uid="uid://dgfkgd7h2luxt" path="res://Shaders/white_shader.tres" id="3_g5qrl"]
+[ext_resource type="Material" path="res://Shaders/white_shader.tres" id="3_g5qrl"]
+[ext_resource type="Script" path="res://Characters/player_movement.gd" id="4_nae5h"]
 [ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="5_0mbah"]
 [ext_resource type="Script" path="res://lightmask_light.gd" id="5_87pro"]
-[ext_resource type="PackedScene" uid="uid://n2fnqpvwa0g" path="res://Lightmasks/player_lightmask.tscn" id="6_hmfdl"]
 
-[node name="GameMap" type="Node2D" node_paths=PackedStringArray("visible_map")]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0svr6"]
+viewport_path = NodePath("Lightmask_Viewport")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kq1ep"]
+radius = 6.7082
+
+[node name="GameMap" type="Node2D" node_paths=PackedStringArray("visible_map", "lightmask_viewport")]
 script = ExtResource("1_4mfh2")
 visible_map = NodePath("VisibleMap")
+lightmask_viewport = NodePath("Lightmask_Viewport")
 shader_white = ExtResource("3_g5qrl")
 
 [node name="VisibleMap" parent="." instance=ExtResource("2_4om6q")]
 
+[node name="debug_lightmask_map" type="Sprite2D" parent="."]
+position = Vector2(68, 39)
+scale = Vector2(0.35, 0.35)
+texture = SubResource("ViewportTexture_0svr6")
+
+[node name="Lightmask_Viewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(384, 216)
+render_target_update_mode = 4
+
+[node name="Litview_Viewport" type="SubViewport" parent="."]
+
 [node name="test_buddy" type="CharacterBody2D" parent="."]
+position = Vector2(180, 143)
+script = ExtResource("4_nae5h")
+
+[node name="lightmask_light" type="Node2D" parent="test_buddy" node_paths=PackedStringArray("lm_manager")]
+script = ExtResource("5_87pro")
+lm_manager = NodePath("../..")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="test_buddy/lightmask_light"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="test_buddy"]
+shape = SubResource("CircleShape2D_kq1ep")
 
 [node name="Sprite2D" type="Sprite2D" parent="test_buddy"]
 texture = ExtResource("5_0mbah")
 region_enabled = true
 region_rect = Rect2(400, 112, 16, 16)
-
-[node name="lightmask_light" type="Node" parent="test_buddy"]
-script = ExtResource("5_87pro")
-
-[node name="player_lightmask" parent="test_buddy" instance=ExtResource("6_hmfdl")]
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="test_buddy"]
-
-[node name="Lightmask_Viewport" type="SubViewport" parent="."]

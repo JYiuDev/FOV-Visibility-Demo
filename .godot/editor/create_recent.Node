@@ -1,5 +1,6 @@
 Node2D
 SubViewport
+CollisionShape2D
 Sprite2D
 PointLight2D
 Node
@@ -7,6 +8,5 @@ RemoteTransform2D
 CharacterBody2D
 SubViewportContainer
 TileMap
-CollisionShape2D
 Camera2D
 DirectionalLight2D

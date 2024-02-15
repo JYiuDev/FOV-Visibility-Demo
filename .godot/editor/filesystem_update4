@@ -1,10 +1,7 @@
-res://Shaders/maskview_shader.gdshader
-res://TileSets/Walls.tres
-res://Lightmasks/player_lightmask.tscn
-res://testing_structure.tscn
-res://FOVMap.gd
 res://Scenes/game_scene.tscn
+res://lightmask_light.gd
+res://TileSets/Walls.tres
 res://Characters/Player.tscn
-res://Shaders/white_shader.gdshader
-res://Shaders/white_shader.tres
-res://VisibleMap.gd
+res://testing_structure.tscn
+res://Lightmasks/lightmask.tscn
+res://FOVMap.gd
