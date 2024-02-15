@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cig60bblp5n7a"]
+
+[ext_resource type="Script" path="res://FOVMap.gd" id="1_4mfh2"]
+[ext_resource type="PackedScene" uid="uid://cuybenefcb3p6" path="res://Level_maps/visible_map_1.tscn" id="2_4om6q"]
+[ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="5_0mbah"]
+[ext_resource type="Script" path="res://lightmask_light.gd" id="5_87pro"]
+[ext_resource type="PackedScene" uid="uid://n2fnqpvwa0g" path="res://Lightmasks/player_lightmask.tscn" id="6_hmfdl"]
+
+[node name="GameMap" type="Node2D"]
+script = ExtResource("1_4mfh2")
+
+[node name="VisibleMap" parent="." instance=ExtResource("2_4om6q")]
+
+[node name="test_buddy" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="test_buddy"]
+texture = ExtResource("5_0mbah")
+region_enabled = true
+region_rect = Rect2(400, 112, 16, 16)
+
+[node name="lightmask_light" type="Node" parent="test_buddy"]
+script = ExtResource("5_87pro")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="test_buddy"]
+
+[node name="player_lightmask" parent="." instance=ExtResource("6_hmfdl")]
+
+[node name="Lightmask_Viewport" type="SubViewport" parent="."]
