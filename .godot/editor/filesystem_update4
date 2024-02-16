@@ -5,3 +5,12 @@ res://Characters/Player.tscn
 res://testing_structure.tscn
 res://Lightmasks/lightmask.tscn
 res://FOVMap.gd
+res://Level_maps/visible_map_1.tscn
+res://Lightmasks/lightmask.gd
+res://Objects/Fire/placable_fire.tscn
+res://level_manager.gd
+res://Characters/player_movement.gd
+res://Shaders/maskview_shader.gdshader
+res://Shaders/post_visibility_shader.gdshader
+res://Shaders/post_visibility_shader.tres
+res://Shaders/new_shader_material.tres

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bqr4krg75oram"]
+
+[ext_resource type="Shader" path="res://Shaders/post_visibility_shader.gdshader" id="1_fijvs"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_so7xk"]
+viewport_path = NodePath("VisibilitySystem/Lightmask_Viewport")
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_fijvs")
+shader_parameter/mask_texture = SubResource("ViewportTexture_so7xk")

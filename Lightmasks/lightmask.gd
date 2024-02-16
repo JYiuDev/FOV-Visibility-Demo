@@ -1,11 +1,13 @@
 extends Node2D
 class_name  WhiteLightMask
 
-var light:PointLight2D
+@export var light:PointLight2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	light = $PointLight2D
+	#light = $PointLight2D
+	
+	pass
 
 
 func _set_texture_scale(s: float):

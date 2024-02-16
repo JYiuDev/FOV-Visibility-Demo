@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://dttxw7s7ege3h"]
+[gd_scene load_steps=14 format=3 uid="uid://dttxw7s7ege3h"]
 
-[ext_resource type="Shader" path="res://Shaders/maskview_shader.gdshader" id="1_ni1mj"]
+[ext_resource type="Material" uid="uid://mtfnyovufh4c" path="res://Shaders/post_visibility_shader.tres" id="1_fcroj"]
 [ext_resource type="TileSet" uid="uid://p1w303aovx23" path="res://TileSets/Walls.tres" id="1_onm7x"]
 [ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="3_5m1bo"]
 [ext_resource type="PackedScene" uid="uid://dpqf5ourprosq" path="res://Characters/Player.tscn" id="3_m2g75"]
@@ -23,14 +23,6 @@ viewport_path = NodePath("VisibilityViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_p1s7y"]
 viewport_path = NodePath("LitView")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_7p0js"]
-viewport_path = NodePath("VisibilityViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nic7k"]
-resource_local_to_scene = true
-shader = ExtResource("1_ni1mj")
-shader_parameter/mask_texture = SubResource("ViewportTexture_7p0js")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_amos5"]
 viewport_path = NodePath("LitView")
@@ -69,7 +61,7 @@ position = Vector2(50, 159)
 texture = SubResource("ViewportTexture_p1s7y")
 
 [node name="litview_sprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_nic7k")
+material = ExtResource("1_fcroj")
 texture = SubResource("ViewportTexture_p1s7y")
 centered = false
 

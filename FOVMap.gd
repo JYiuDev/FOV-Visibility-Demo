@@ -1,11 +1,14 @@
-extends Node2D
-class_name LightmaskManager
+extends Node
+class_name VisibilityManager
+
+"""
+Visibility system node
+Main responsibity is to contain references for white masked map and lit map subviewports
+"""
 
 @export var visible_map: TileMap
-var lightmask_tilemap: TileMap
 @export var lightmask_viewport: SubViewport
 @export var shader_white: Material
-var debug_sprite: Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

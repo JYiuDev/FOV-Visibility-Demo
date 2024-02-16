@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://clt8gdlwlwuph"]
+
+[ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="1_g5btc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_maigr"]
+radius = 7.07107
+
+[node name="Fire" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_g5btc")
+region_enabled = true
+region_rect = Rect2(224, 160, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_maigr")
