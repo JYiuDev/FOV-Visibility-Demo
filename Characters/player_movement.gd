@@ -4,7 +4,7 @@ Handle player movement
 """
 
 @export var speed = 50
-var torch_packed  = preload("res://Objects/Fire/torch.tscn")
+var torch_packed  = preload("res://Objects/Torch/torch.tscn")
 var level_manager: LevelManager
 # Called when the node enters the scene tree for the first time.
 func _ready():
