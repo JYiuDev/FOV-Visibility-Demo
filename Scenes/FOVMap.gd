@@ -9,6 +9,7 @@ Main responsibity is to contain references for white masked map and lit map subv
 @export var visible_map: TileMap
 @export var lightmask_viewport: SubViewport
 @export var shader_white: Material
+@export var litview_viewport: SubViewport
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cuybenefcb3p6"]
 
 [ext_resource type="TileSet" uid="uid://p1w303aovx23" path="res://TileSets/Walls.tres" id="1_ui4wd"]
-[ext_resource type="Script" path="res://VisibleMap.gd" id="2_v1x2y"]
-[ext_resource type="Material" path="res://Shaders/white_shader.tres" id="3_yk1p6"]
+[ext_resource type="Script" path="res://Scenes/VisibleMap.gd" id="2_v1x2y"]
+[ext_resource type="Material" uid="uid://dgfkgd7h2luxt" path="res://Shaders/white_shader.tres" id="3_yk1p6"]
 
 [node name="VisibleMap" type="TileMap"]
 tile_set = ExtResource("1_ui4wd")
