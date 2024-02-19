@@ -18,12 +18,6 @@ height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dgvh5"]
-viewport_path = NodePath("VisibilityViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_p1s7y"]
-viewport_path = NodePath("LitView")
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_amos5"]
 viewport_path = NodePath("LitView")
 
@@ -42,6 +36,12 @@ height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_dgvh5"]
+viewport_path = NodePath("VisibilityViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p1s7y"]
+viewport_path = NodePath("LitView")
+
 [node name="GameScene" type="Node"]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
@@ -51,19 +51,6 @@ energy = 1.9
 blend_mode = 1
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_wh320")
-
-[node name="debug_visiblity" type="Sprite2D" parent="."]
-position = Vector2(49, 62)
-texture = SubResource("ViewportTexture_dgvh5")
-
-[node name="debug_litview" type="Sprite2D" parent="."]
-position = Vector2(50, 159)
-texture = SubResource("ViewportTexture_p1s7y")
-
-[node name="litview_sprite" type="Sprite2D" parent="."]
-material = ExtResource("1_fcroj")
-texture = SubResource("ViewportTexture_p1s7y")
-centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -91,6 +78,7 @@ region_rect = Rect2(464, 112, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LitView/Cat"]
 shape = SubResource("CircleShape2D_0k7rh")
+debug_color = Color(0.890196, 0.258824, 0.517647, 0.419608)
 
 [node name="PlayerCharacter" parent="LitView" instance=ExtResource("3_m2g75")]
 position = Vector2(203, 109)
@@ -118,5 +106,40 @@ energy = 2.55
 blend_mode = 1
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_7dapb")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -107.5
+offset_right = 384.0
+offset_bottom = 107.5
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 26.0
+offset_top = -108.0
+offset_right = 409.0
+offset_bottom = 107.0
+grow_vertical = 2
+
+[node name="debug_visiblity" type="Sprite2D" parent="Control/HBoxContainer"]
+position = Vector2(166, 108)
+texture = SubResource("ViewportTexture_dgvh5")
+
+[node name="debug_litview" type="Sprite2D" parent="Control/HBoxContainer"]
+position = Vector2(48, 108)
+texture = SubResource("ViewportTexture_p1s7y")
+
+[node name="litview_sprite" type="Sprite2D" parent="Control/HBoxContainer"]
+material = ExtResource("1_fcroj")
+position = Vector2(95, 0)
+texture = SubResource("ViewportTexture_p1s7y")
+centered = false
 
 [editable path="LitView/PlayerCharacter"]
