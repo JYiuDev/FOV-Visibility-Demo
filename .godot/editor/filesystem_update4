@@ -1,8 +1,0 @@
-res://Scenes/game_scene.tscn
-res://Shaders/maskview_shader.gdshader
-res://Shaders/post_visibility_shader.tres
-res://TileSets/Walls.tres
-res://Shaders/post_visibility_shader.gdshader
-res://Shaders/new_shader_material.tres
-res://Characters/Player.tscn
-res://Scenes/testing_structure.tscn
