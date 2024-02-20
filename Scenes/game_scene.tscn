@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dttxw7s7ege3h"]
+[gd_scene load_steps=16 format=3 uid="uid://dttxw7s7ege3h"]
 
 [ext_resource type="Material" uid="uid://mtfnyovufh4c" path="res://Shaders/post_visibility_shader.tres" id="1_fcroj"]
 [ext_resource type="TileSet" uid="uid://p1w303aovx23" path="res://TileSets/Walls.tres" id="1_onm7x"]
@@ -24,6 +24,22 @@ viewport_path = NodePath("LitView")
 [sub_resource type="CircleShape2D" id="CircleShape2D_0k7rh"]
 radius = 6.0
 
+[sub_resource type="Gradient" id="Gradient_4bqhm"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.655844)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rc8r4"]
+gradient = SubResource("Gradient_4bqhm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dgvh5"]
+viewport_path = NodePath("VisibilityViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p1s7y"]
+viewport_path = NodePath("LitView")
+
 [sub_resource type="Gradient" id="Gradient_66pl4"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.284483)
@@ -35,12 +51,6 @@ width = 256
 height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_dgvh5"]
-viewport_path = NodePath("VisibilityViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_p1s7y"]
-viewport_path = NodePath("LitView")
 
 [node name="GameScene" type="Node"]
 
@@ -89,6 +99,28 @@ texture_filter = 1
 [node name="RemoteTransform2D" parent="LitView/PlayerCharacter/Visibility" index="0"]
 remote_path = NodePath("../../../../VisibilityViewport/PointLight2D2")
 
+[node name="PointLight2D" type="PointLight2D" parent="LitView/PlayerCharacter"]
+visible = false
+color = Color(1, 1, 0.278431, 1)
+energy = 2.87
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_rc8r4")
+texture_scale = 1.48
+
+[node name="debug_visiblity" type="Sprite2D" parent="."]
+position = Vector2(192, 108)
+texture = SubResource("ViewportTexture_dgvh5")
+
+[node name="debug_litview" type="Sprite2D" parent="."]
+position = Vector2(74, 108)
+texture = SubResource("ViewportTexture_p1s7y")
+
+[node name="litview_sprite" type="Sprite2D" parent="."]
+material = ExtResource("1_fcroj")
+position = Vector2(121, 0)
+texture = SubResource("ViewportTexture_p1s7y")
+centered = false
+
 [node name="VisibilityViewport" type="SubViewport" parent="."]
 transparent_bg = true
 size = Vector2i(384, 216)
@@ -106,40 +138,5 @@ energy = 2.55
 blend_mode = 1
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_7dapb")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -107.5
-offset_right = 384.0
-offset_bottom = 107.5
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 26.0
-offset_top = -108.0
-offset_right = 409.0
-offset_bottom = 107.0
-grow_vertical = 2
-
-[node name="debug_visiblity" type="Sprite2D" parent="Control/HBoxContainer"]
-position = Vector2(166, 108)
-texture = SubResource("ViewportTexture_dgvh5")
-
-[node name="debug_litview" type="Sprite2D" parent="Control/HBoxContainer"]
-position = Vector2(48, 108)
-texture = SubResource("ViewportTexture_p1s7y")
-
-[node name="litview_sprite" type="Sprite2D" parent="Control/HBoxContainer"]
-material = ExtResource("1_fcroj")
-position = Vector2(95, 0)
-texture = SubResource("ViewportTexture_p1s7y")
-centered = false
 
 [editable path="LitView/PlayerCharacter"]
