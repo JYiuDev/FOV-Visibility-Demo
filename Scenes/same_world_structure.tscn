@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://drqwrwj5kos0b"]
+[gd_scene load_steps=2 format=3 uid="uid://cxn1uqfp225na"]
+
+[ext_resource type="PackedScene" uid="uid://cuybenefcb3p6" path="res://Level_maps/visible_map_1.tscn" id="1_yurl4"]
 
 [node name="SameWorldStructure" type="Node"]
+
+[node name="AlwaysVisible" type="SubViewport" parent="."]
+canvas_cull_mask = 4294966273
+
+[node name="SharedWorld" type="Node2D" parent="."]
+visibility_layer = 1021
+
+[node name="VisibleMap" parent="SharedWorld" instance=ExtResource("1_yurl4")]

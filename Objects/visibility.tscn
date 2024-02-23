@@ -1,9 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://hieif04p7822"]
 
-[ext_resource type="Script" path="res://Lightmasks/lightmask_light.gd" id="1_6io7e"]
+[ext_resource type="Script" path="res://Lightmasks/lightmask_light.gd" id="1_ti3oc"]
 
 [node name="Visibility" type="Node2D"]
-script = ExtResource("1_6io7e")
+script = ExtResource("1_ti3oc")
 light_texture_scale = 2.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+
+[node name="FuelTimer" type="Timer" parent="."]
+one_shot = true

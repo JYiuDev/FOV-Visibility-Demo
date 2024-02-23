@@ -15,3 +15,6 @@ func _set_texture_scale(s: float):
 
 func _set_light_scale(s: Vector2):
 	light.scale = s
+
+func _get_texture_scale() -> float:
+	return light.texture_scale
