@@ -14,5 +14,10 @@ The concept of this implementation can be broken down to two parts:
 ## Creating the normal map
 To create the desired normal map, this project will rely on Godot's inherent lighting and occlusion system to generate the lit and unlit areas of light sources. 
 
-![PointLight2D + Occlusion showcase](/PointLight_Occlusion/png)
-By attaching a PointLight2D node on the player and adding light occlusion areas for the enviornment, we can created a light effect which gets occluded by different objects in the enviornment.The light texture in the image is semi transparent and yellow to showcase the occlusion effect with better visibility, but for our implementation we want a non-transparent black colour texture for the light to accomadate the needs for our normal map.
+![PointLight2D + Occlusion showcase](/PointLight_Occlusion.png)
+
+By attaching a PointLight2D node on the player and adding light occlusion areas for the enviornment. Light will originate from the character in the shape of its texture.
+
+We will then translate this into a black and white normal map so it is easer to work with. This is done by duplicating the world map into a subviewport and rendering the viewport texture with a white shader while also setting the point light mode to "subtract".
+
+
