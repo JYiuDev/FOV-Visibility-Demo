@@ -46,7 +46,7 @@ func _ready():
 func _update_light(time:float):
 	light_time = fmod(light_time+time,10)
 	var light_flucuation:float = myMath._sin(light_time, 0.1, 10)
-	print("flucuation = " + str(light_flucuation).pad_decimals(2))
+	#print("flucuation = " + str(light_flucuation).pad_decimals(2))
 	lightmask._set_texture_scale(cur_light_texture + light_flucuation)
 	
 
