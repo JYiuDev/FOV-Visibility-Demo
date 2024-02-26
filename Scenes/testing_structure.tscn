@@ -64,6 +64,7 @@ script = ExtResource("6_xiis3")
 light_texture_scale = 1.0
 max_texture_scale = 5.0
 min_texture_scale = 0.5
+max_fuel_time = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisibilitySystem/Litview_Viewport/Player_World/test_buddy"]
 shape = SubResource("CircleShape2D_kq1ep")
