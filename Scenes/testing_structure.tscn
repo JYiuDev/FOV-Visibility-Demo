@@ -1,22 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://blfpq7iq5cakf"]
+[gd_scene load_steps=9 format=3 uid="uid://blfpq7iq5cakf"]
 
 [ext_resource type="Script" path="res://Scenes/level_manager.gd" id="1_1gjuq"]
 [ext_resource type="Material" uid="uid://bqr4krg75oram" path="res://Shaders/new_shader_material.tres" id="2_8ommx"]
 [ext_resource type="Script" path="res://Scenes/FOVMap.gd" id="3_rximk"]
 [ext_resource type="Material" uid="uid://dgfkgd7h2luxt" path="res://Shaders/white_shader.tres" id="4_ithlq"]
 [ext_resource type="PackedScene" uid="uid://cuybenefcb3p6" path="res://Level_maps/visible_map_1.tscn" id="5_uvsc7"]
-[ext_resource type="Script" path="res://Characters/player_movement.gd" id="6_xiis3"]
-[ext_resource type="PackedScene" uid="uid://hieif04p7822" path="res://Objects/visibility.tscn" id="7_5ib52"]
-[ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="8_hwogr"]
+[ext_resource type="PackedScene" uid="uid://oqmumoi2jlcn" path="res://Real/Player/test_buddy.tscn" id="6_cp2by"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3lqnf"]
 viewport_path = NodePath("VisibilitySystem/Litview_Viewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0svr6"]
 viewport_path = NodePath("VisibilitySystem/Lightmask_Viewport")
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_kq1ep"]
-radius = 6.7082
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("visibility_system")]
 texture_filter = 1
@@ -60,33 +55,4 @@ texture_filter = 1
 [node name="VisibleMap" parent="VisibilitySystem/Litview_Viewport/Player_World" instance=ExtResource("5_uvsc7")]
 texture_filter = 1
 
-[node name="test_buddy" type="CharacterBody2D" parent="VisibilitySystem/Litview_Viewport/Player_World"]
-z_index = 1
-texture_filter = 1
-position = Vector2(180, 143)
-script = ExtResource("6_xiis3")
-
-[node name="Visibility" parent="VisibilitySystem/Litview_Viewport/Player_World/test_buddy" instance=ExtResource("7_5ib52")]
-light_texture_scale = 1.0
-max_texture_scale = 5.0
-min_texture_scale = 0.5
-max_fuel_time = 180.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VisibilitySystem/Litview_Viewport/Player_World/test_buddy"]
-shape = SubResource("CircleShape2D_kq1ep")
-
-[node name="PlayerSprite" type="Sprite2D" parent="VisibilitySystem/Litview_Viewport/Player_World/test_buddy"]
-texture_filter = 1
-texture = ExtResource("8_hwogr")
-region_enabled = true
-region_rect = Rect2(400, 112, 16, 16)
-
-[node name="PlayerCamera" type="Node2D" parent="VisibilitySystem/Litview_Viewport/Player_World/test_buddy"]
-
-[node name="Camera2D" type="Camera2D" parent="VisibilitySystem/Litview_Viewport/Player_World/test_buddy/PlayerCamera"]
-texture_filter = 1
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisibilitySystem/Litview_Viewport/Player_World/test_buddy/PlayerCamera"]
-remote_path = NodePath("../../../../../Lightmask_Viewport/Camera2D")
-
-[editable path="VisibilitySystem/Litview_Viewport/Player_World/test_buddy/Visibility"]
+[node name="test_buddy" parent="VisibilitySystem/Litview_Viewport/Player_World" instance=ExtResource("6_cp2by")]

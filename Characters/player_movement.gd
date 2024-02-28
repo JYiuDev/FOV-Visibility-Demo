@@ -4,11 +4,8 @@ Handle player movement
 """
 
 @export var speed = 50
+@export var level_manager: LevelManager
 var torch_packed  = preload("res://Objects/Fire/torch.tscn")
-var level_manager: LevelManager
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	level_manager = get_node("/root/Level")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
