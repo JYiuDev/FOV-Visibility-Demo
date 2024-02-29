@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbqh14yo2m4l1"]
+[gd_scene load_steps=9 format=3 uid="uid://bbqh14yo2m4l1"]
 
 [ext_resource type="Script" path="res://Scenes/level_manager.gd" id="1_0bkum"]
 [ext_resource type="TileSet" uid="uid://p1w303aovx23" path="res://TileSets/Walls.tres" id="1_dkjym"]
@@ -9,10 +9,17 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_fmjnw"]
 viewport_path = NodePath("Visibility_System/LightNormalView")
 
-[node name="Level" type="Node2D"]
-script = ExtResource("1_0bkum")
+[sub_resource type="ViewportTexture" id="ViewportTexture_ndb8a"]
+viewport_path = NodePath("Visibility_System/LitView")
 
-[node name="BottomLayerMap" type="TileMap" parent="."]
+[sub_resource type="ViewportTexture" id="ViewportTexture_l31nj"]
+viewport_path = NodePath("Visibility_System/LitView")
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("visibility_system")]
+script = ExtResource("1_0bkum")
+visibility_system = NodePath("Visibility_System")
+
+[node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
 tile_set = ExtResource("1_dkjym")
 format = 2
@@ -20,7 +27,11 @@ layer_0/tile_data = PackedInt32Array(-131076, 3, 0, -65540, 3, 0, -4, 3, 0, 6553
 
 [node name="Entities" type="Node2D" parent="."]
 
-[node name="test_buddy" parent="Entities" instance=ExtResource("3_2v5nc")]
+[node name="test_buddy" parent="Entities" node_paths=PackedStringArray("level_manager") instance=ExtResource("3_2v5nc")]
+level_manager = NodePath("../..")
+
+[node name="RemoteTransform2D" parent="Entities/test_buddy/PlayerCamera" index="1"]
+remote_path = NodePath("../../../../Visibility_System/LightNormalView/Camera2D")
 
 [node name="Visibility_System" type="Control" parent="." node_paths=PackedStringArray("visible_map", "lightmask_viewport", "litview_viewport")]
 layout_mode = 3
@@ -28,7 +39,7 @@ anchors_preset = 0
 offset_right = 384.0
 offset_bottom = 216.0
 script = ExtResource("4_hsnui")
-visible_map = NodePath("../BottomLayerMap")
+visible_map = NodePath("../TileMap")
 lightmask_viewport = NodePath("LightNormalView")
 shader_white = ExtResource("4_qrsrs")
 litview_viewport = NodePath("LitView")
@@ -38,7 +49,7 @@ handle_input_locally = false
 size = Vector2i(384, 216)
 render_target_update_mode = 4
 
-[node name="LitViewMap" type="TileMap" parent="Visibility_System/LitView"]
+[node name="TileMapDupe" type="TileMap" parent="Visibility_System/LitView"]
 texture_filter = 1
 tile_set = ExtResource("1_dkjym")
 format = 2
@@ -49,7 +60,27 @@ handle_input_locally = false
 size = Vector2i(384, 216)
 render_target_update_mode = 4
 
-[node name="LightNormalImage" type="Sprite2D" parent="."]
-position = Vector2(19, 20)
+[node name="Camera2D" type="Camera2D" parent="Visibility_System/LightNormalView"]
+position = Vector2(180, 143)
+
+[node name="Debug_Sprites" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Light_Normal_Map" type="Sprite2D" parent="Debug_Sprites"]
 scale = Vector2(0.1, 0.1)
 texture = SubResource("ViewportTexture_fmjnw")
+centered = false
+
+[node name="Lit_View_Map" type="Sprite2D" parent="Debug_Sprites"]
+position = Vector2(0, 25)
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_ndb8a")
+centered = false
+
+[node name="FOV_Overlay" type="Sprite2D" parent="."]
+texture = SubResource("ViewportTexture_l31nj")
+centered = false
+
+[editable path="Entities/test_buddy"]
+[editable path="Entities/test_buddy/Visibility"]

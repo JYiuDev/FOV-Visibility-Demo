@@ -4,12 +4,12 @@ extends Node2D
 Instantiating masking light and set up remote transform to it
 """
 const myMath = preload("res://Libraries/my_math.gd")
+var packed_lightmask = preload("res://Lightmasks/lightmask.tscn")
 
-var level_manager:LevelManager
+var level_manager:Level
 var visibility_system: VisibilityManager
 var remote_transform: RemoteTransform2D
 var lightmask: WhiteLightMask
-var packed_lightmask = preload("res://Lightmasks/lightmask.tscn")
 
 
 @export_range(0,30) var light_texture_scale: float
@@ -56,3 +56,4 @@ func _lightfuel_interpolation():
 func _process(delta):
 	_lightfuel_interpolation()
 	_update_light(delta)
+	

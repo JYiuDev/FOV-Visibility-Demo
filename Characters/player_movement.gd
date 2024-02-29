@@ -4,7 +4,7 @@ Handle player movement
 """
 
 @export var speed = 50
-@export var level_manager: LevelManager
+@export var level_manager: Level
 var torch_packed  = preload("res://Objects/Fire/torch.tscn")
 
 
@@ -29,3 +29,4 @@ func trymake(scene: PackedScene):
 	var vis_sys = level_manager.visibility_system
 	ins_scene.global_position = global_position
 	vis_sys.litview_viewport.add_child(ins_scene)
+	

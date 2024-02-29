@@ -17,7 +17,5 @@ func _ready():
 	duplicate_map.material = shader_white
 	lightmask_viewport.add_child(duplicate_map)
 	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+	var duplicate_map_2:TileMap = visible_map.duplicate()
+	litview_viewport.add_child(duplicate_map_2)
