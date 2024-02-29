@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://blfpq7iq5cakf"]
+[gd_scene load_steps=8 format=3 uid="uid://blfpq7iq5cakf"]
 
-[ext_resource type="Script" path="res://Scenes/level_manager.gd" id="1_1gjuq"]
 [ext_resource type="Material" uid="uid://bqr4krg75oram" path="res://Shaders/new_shader_material.tres" id="2_8ommx"]
 [ext_resource type="Script" path="res://Scenes/FOVMap.gd" id="3_rximk"]
 [ext_resource type="Material" uid="uid://dgfkgd7h2luxt" path="res://Shaders/white_shader.tres" id="4_ithlq"]
@@ -13,10 +12,8 @@ viewport_path = NodePath("VisibilitySystem/Litview_Viewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_0svr6"]
 viewport_path = NodePath("VisibilitySystem/Lightmask_Viewport")
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("visibility_system")]
+[node name="Level" type="Node2D"]
 texture_filter = 1
-script = ExtResource("1_1gjuq")
-visibility_system = NodePath("VisibilitySystem")
 
 [node name="Post_Visibility_View" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -56,3 +53,6 @@ texture_filter = 1
 texture_filter = 1
 
 [node name="test_buddy" parent="VisibilitySystem/Litview_Viewport/Player_World" instance=ExtResource("6_cp2by")]
+
+[editable path="VisibilitySystem/Litview_Viewport/Player_World/test_buddy"]
+[editable path="VisibilitySystem/Litview_Viewport/Player_World/test_buddy/Visibility"]
