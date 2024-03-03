@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://biis2dmt0jalf"]
+
+[ext_resource type="PackedScene" uid="uid://cuybenefcb3p6" path="res://TileMaps/TileMap.tscn" id="1_7qno8"]
+[ext_resource type="Script" path="res://Real/FluctuatingLight.gd" id="2_qdw6g"]
+
+[sub_resource type="Gradient" id="Gradient_l4w3k"]
+offsets = PackedFloat32Array(0, 0.642857)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_26kty"]
+gradient = SubResource("Gradient_l4w3k")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Light_Test" type="Node2D"]
+
+[node name="VisibleMap" parent="." instance=ExtResource("1_7qno8")]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(126, 74)
+color = Color(1, 0.329412, 0.211765, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_26kty")
+script = ExtResource("2_qdw6g")
