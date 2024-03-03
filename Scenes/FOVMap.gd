@@ -16,6 +16,3 @@ func _ready():
 	var duplicate_map:TileMap = visible_map.duplicate()
 	duplicate_map.material = shader_white
 	lightmask_viewport.add_child(duplicate_map)
-	
-	var duplicate_map_2:TileMap = visible_map.duplicate()
-	litview_viewport.add_child(duplicate_map_2)

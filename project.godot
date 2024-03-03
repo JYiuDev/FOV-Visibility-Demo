@@ -24,6 +24,12 @@ window/size/window_height_override=900
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
+[file_customization]
+
+folder_colors={
+"res://VisionSource/": "purple"
+}
+
 [filesystem]
 
 import/fbx/enabled=false

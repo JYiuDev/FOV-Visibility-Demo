@@ -1,22 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://dttxw7s7ege3h"]
+[gd_scene load_steps=14 format=3 uid="uid://dttxw7s7ege3h"]
 
 [ext_resource type="Material" uid="uid://mtfnyovufh4c" path="res://Shaders/post_visibility_shader.tres" id="1_fcroj"]
 [ext_resource type="TileSet" uid="uid://p1w303aovx23" path="res://TileSets/Walls.tres" id="1_onm7x"]
 [ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="3_5m1bo"]
 [ext_resource type="PackedScene" uid="uid://dpqf5ourprosq" path="res://Characters/Player.tscn" id="3_m2g75"]
 [ext_resource type="Material" uid="uid://dgfkgd7h2luxt" path="res://Shaders/white_shader.tres" id="5_22wg6"]
-
-[sub_resource type="Gradient" id="Gradient_nwkdo"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.368263)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_wh320"]
-gradient = SubResource("Gradient_nwkdo")
-width = 256
-height = 256
-fill = 1
-fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_amos5"]
 viewport_path = NodePath("LitView")
@@ -55,14 +43,6 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="GameScene" type="Node"]
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
-position = Vector2(3, 8)
-energy = 1.9
-blend_mode = 1
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_wh320")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

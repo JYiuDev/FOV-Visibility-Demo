@@ -1,11 +1,10 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://mtfnyovufh4c"]
 
-[ext_resource type="Shader" path="res://Shaders/maskview_shader.gdshader" id="1_vmbbe"]
+[ext_resource type="Shader" path="res://Shaders/game_scene_post.gdshader" id="1_gw7v1"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_7p0js"]
 viewport_path = NodePath("VisibilityViewport")
 
 [resource]
-resource_local_to_scene = true
-shader = ExtResource("1_vmbbe")
+shader = ExtResource("1_gw7v1")
 shader_parameter/mask_texture = SubResource("ViewportTexture_7p0js")
