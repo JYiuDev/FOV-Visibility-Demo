@@ -62,6 +62,8 @@ layer_0/tile_data = PackedInt32Array(196617, 1, 16, 262153, 1, 17, 327689, 1, 17
 
 [node name="Cat" type="CharacterBody2D" parent="LitView"]
 position = Vector2(171, 72)
+collision_layer = 128
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="LitView/Cat"]
 texture = ExtResource("3_5m1bo")
