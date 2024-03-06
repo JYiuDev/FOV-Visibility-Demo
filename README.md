@@ -21,20 +21,16 @@ By attaching a PointLight2D node on the player and adding light occlusion areas 
 We will then translate this into a black and white normal map so it is easer to work with. This is done by duplicating the world map into a subviewport and rendering the viewport texture with a white shader, then set our PointLight2D's blendmode to subtract from the light values.
 
 ![Normal map](/White_Normal_Map.png)
-
-As shown, this setup generates a 1:1 image of the visible world where the dark areas represents areas that are lit and bright areas being unlit.
+godo
+As shown, this setup generates a 1:1 image of the viewport where the dark areas represents areas that are lit and bright areas being unlit.
 
 ## Filtering unlit areas
 Now we just need to have the regular world map and filter out the corresponding pixels that are dark on the white normal map to produce the effect we wanted.
 
-To do this, we will use another shader, with the same viewport setup 
+Applying the same subviewport structure as our light normal map, we get another 1:1 image of the viewport, using the above mentioned filter method, the unlit areas will be filtered to the color value that we desire. Here we converted unlit areas to transparent.
 
 ## Structure
-Summar
+Summary
 
-## Pros and Cons
-Pros:
-You can create other vision sources simply by adding another PointLight in the normal map viewport.
-
-Cons:
-It's very inefficient if any light occluders have to move, interactable objects like doors or movable objects will have to exist in atleast 2 "worlds" and synchronize their transforms.
+## Concerns
+It's very inefficient if any light occluders has to move, interactable objects like doors or movable objects will have to exist in atleast 2 "worlds" and synchronize their transforms.
