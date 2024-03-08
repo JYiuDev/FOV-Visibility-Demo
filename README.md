@@ -21,7 +21,7 @@ By attaching a PointLight2D node on the player and adding light occlusion areas 
 We will then translate this into a black and white normal map so it is easer to work with. This is done by duplicating the world map into a subviewport and rendering the viewport texture with a white shader, then set our PointLight2D's blendmode to subtract from the light values.
 
 ![Normal map](/White_Normal_Map.png)
-godo
+
 As shown, this setup generates a 1:1 image of the viewport where the dark areas represents areas that are lit and bright areas being unlit.
 
 ## Filtering unlit areas
@@ -30,7 +30,9 @@ Now we just need to have the regular world map and filter out the corresponding 
 Applying the same subviewport structure as our light normal map, we get another 1:1 image of the viewport, using the above mentioned filter method, the unlit areas will be filtered to the color value that we desire. Here we converted unlit areas to transparent.
 
 ## Structure
-Summary
+To put this together, 
 
-## Concerns
+## Issues
 It's very inefficient if any light occluders has to move, interactable objects like doors or movable objects will have to exist in atleast 2 "worlds" and synchronize their transforms.
+
+This seems like a bug with the current Godot, but sometimes when opening the the project the path to viewport on the filter shader gets changed for some reason. Resetting the node path to the correct node should fix it however it is not a permanent solution. Therefore we will manually set the path for shader's sampler2d at runtime for now.
