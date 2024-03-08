@@ -1,6 +1,9 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://p1w303aovx23"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://p1w303aovx23"]
 
 [ext_resource type="Texture2D" uid="uid://c2bfjy0036v8d" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored_packed.png" id="1_avs53"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jxaw4"]
+polygon = PackedVector2Array(-1.10485, 7.07107, -1.06066, 5.03814, 0.972272, 4.99394, 1.01647, 7.07107)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7t6yb"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -10,6 +13,9 @@ polygon = PackedVector2Array(-3.125, -8, 3, -8, 3, 8, -3.25, 8)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mcpiq"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_in1fp"]
+polygon = PackedVector2Array(-1, 7, 0.9375, 7, 1, 5.0625, -0.9375, 5.0625)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wlpqn"]
 polygon = PackedVector2Array(8, 3.125, 8, -3, -8, -3, -8, 3.25)
@@ -95,6 +101,15 @@ texture = ExtResource("1_avs53")
 4:18/0 = 0
 4:18/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:18/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_jxaw4")
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.125, 7, -5.375, 2.875, -0.125, -8, 5.375, 2.875, 1.375, 7)
+1:1/0 = 0
+1:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_in1fp")
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0gc4w"]
 resource_name = "Floor"
@@ -114,6 +129,21 @@ texture = ExtResource("1_avs53")
 4:0/0 = 0
 4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+6:0/0 = 0
+6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:0/0/physics_layer_0/angular_velocity = 0.0
+7:0/0 = 0
+7:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:0/0/physics_layer_0/angular_velocity = 0.0
+33:12/0 = 0
+33:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+33:12/0/physics_layer_0/angular_velocity = 0.0
+34:12/0 = 0
+34:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+34:12/0/physics_layer_0/angular_velocity = 0.0
 
 [resource]
 occlusion_layer_0/light_mask = 1

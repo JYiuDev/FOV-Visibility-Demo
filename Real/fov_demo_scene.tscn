@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbqh14yo2m4l1"]
+[gd_scene load_steps=10 format=3 uid="uid://bbqh14yo2m4l1"]
 
 [ext_resource type="Script" path="res://Scenes/level_manager.gd" id="1_0bkum"]
 [ext_resource type="TileSet" uid="uid://p1w303aovx23" path="res://TileSets/Walls.tres" id="1_dkjym"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://Scenes/FOVMap.gd" id="4_hsnui"]
 [ext_resource type="Material" uid="uid://dgfkgd7h2luxt" path="res://Shaders/white_shader.tres" id="4_qrsrs"]
 [ext_resource type="Material" uid="uid://bqr4krg75oram" path="res://Shaders/new_shader_material.tres" id="6_iu25s"]
-[ext_resource type="Script" path="res://Real/FluctuatingLight.gd" id="7_1fc7y"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_l31nj"]
 viewport_path = NodePath("Visibility_System/LitView")
@@ -16,18 +15,6 @@ viewport_path = NodePath("Visibility_System/LightNormalView")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ndb8a"]
 viewport_path = NodePath("Visibility_System/LitView")
-
-[sub_resource type="Gradient" id="Gradient_iwk8t"]
-offsets = PackedFloat32Array(0, 0.681818)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_avlx6"]
-gradient = SubResource("Gradient_iwk8t")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0, 0)
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("visibility_system")]
 script = ExtResource("1_0bkum")
@@ -113,12 +100,6 @@ position = Vector2(0, 25)
 scale = Vector2(0.1, 0.1)
 texture = SubResource("ViewportTexture_ndb8a")
 centered = false
-
-[node name="FluctuatingLight" type="PointLight2D" parent="."]
-position = Vector2(181, 143)
-color = Color(0.870588, 0.384314, 0.235294, 1)
-texture = SubResource("GradientTexture2D_avlx6")
-script = ExtResource("7_1fc7y")
 
 [editable path="Entities/test_buddy"]
 [editable path="Entities/test_buddy/Visibility"]
