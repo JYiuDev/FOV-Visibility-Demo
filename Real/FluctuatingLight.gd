@@ -20,4 +20,5 @@ func energy_flicker(time: float):
 	var wave2 = myMath._sin(time, 0.5, 0.3)
 	var wave3 = myMath._sin(time, 1, 2)
 	energy = defualt_energy + ((wave1 + wave2 + wave3)*0.6)
+	clampf(energy, 0 , 3)
 	texture_scale = default_texture_scale + ((wave1 + wave2 + wave3)*0.1)

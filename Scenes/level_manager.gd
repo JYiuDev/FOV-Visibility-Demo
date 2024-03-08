@@ -7,4 +7,3 @@ Storing reference for various systems of the level
 """
 
 @export var visibility_system: VisibilityManager
-
