@@ -4,9 +4,13 @@ Handle player movement
 """
 
 @export var speed = 50
-@export var level_manager: Level
+var level_manager: LevelManager
 var torch_packed  = preload("res://Objects/Fire/torch.tscn")
 
+func _ready():
+	# Get level manager
+	if (get_node("/root").get_child(0) is LevelManager):
+		level_manager = get_node("/root").get_child(0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

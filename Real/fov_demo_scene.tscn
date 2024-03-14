@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/level_manager.gd" id="1_0bkum"]
 [ext_resource type="TileSet" uid="uid://p1w303aovx23" path="res://TileSets/Walls.tres" id="1_dkjym"]
 [ext_resource type="PackedScene" uid="uid://oqmumoi2jlcn" path="res://Real/Player/test_buddy.tscn" id="3_2v5nc"]
-[ext_resource type="Script" path="res://Scenes/FOVMap.gd" id="4_hsnui"]
+[ext_resource type="Script" path="res://Scenes/Visibility_Manager.gd" id="4_hsnui"]
 [ext_resource type="Material" uid="uid://dgfkgd7h2luxt" path="res://Shaders/white_shader.tres" id="4_qrsrs"]
 [ext_resource type="Material" uid="uid://bqr4krg75oram" path="res://Shaders/new_shader_material.tres" id="6_iu25s"]
 

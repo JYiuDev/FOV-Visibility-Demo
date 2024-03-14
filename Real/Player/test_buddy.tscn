@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://oqmumoi2jlcn"]
+[gd_scene load_steps=6 format=3 uid="uid://oqmumoi2jlcn"]
 
 [ext_resource type="Script" path="res://Characters/player_movement.gd" id="1_qi01v"]
-[ext_resource type="PackedScene" uid="uid://hieif04p7822" path="res://Objects/visibility.tscn" id="2_ebkxh"]
+[ext_resource type="PackedScene" uid="uid://hieif04p7822" path="res://Objects/Visibility_Node.tscn" id="2_ycrr6"]
 [ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="3_055on"]
+[ext_resource type="Script" path="res://Real/Player/PlayerCameras.gd" id="4_3edki"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kq1ep"]
 radius = 6.7082
@@ -13,7 +14,7 @@ texture_filter = 1
 position = Vector2(180, 143)
 script = ExtResource("1_qi01v")
 
-[node name="Visibility" parent="." instance=ExtResource("2_ebkxh")]
+[node name="Visibility" parent="." instance=ExtResource("2_ycrr6")]
 light_texture_scale = 1.0
 max_texture_scale = 3.0
 min_texture_scale = 0.5
@@ -28,12 +29,10 @@ texture = ExtResource("3_055on")
 region_enabled = true
 region_rect = Rect2(400, 112, 16, 16)
 
-[node name="PlayerCamera" type="Node2D" parent="."]
+[node name="PlayerCameras" type="Node2D" parent="."]
+script = ExtResource("4_3edki")
 
-[node name="Camera2D" type="Camera2D" parent="PlayerCamera"]
+[node name="Camera2D" type="Camera2D" parent="PlayerCameras"]
 texture_filter = 1
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerCamera"]
-remote_path = NodePath("../../../../../Lightmask_Viewport/Camera2D")
 
 [editable path="Visibility"]
