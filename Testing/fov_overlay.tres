@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://coyldhp2usqvq"]
+
+[ext_resource type="Shader" path="res://Testing/fov_overlay.gdshader" id="1_a7ir8"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fogkj"]
+viewport_path = NodePath("VisibilitySystem/Lightmask_Viewport")
+
+[resource]
+shader = ExtResource("1_a7ir8")
+shader_parameter/mask_texture = SubResource("ViewportTexture_fogkj")

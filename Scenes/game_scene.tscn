@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dttxw7s7ege3h"]
+[gd_scene load_steps=15 format=3 uid="uid://dttxw7s7ege3h"]
 
 [ext_resource type="Material" uid="uid://mtfnyovufh4c" path="res://Shaders/post_visibility_shader.tres" id="1_fcroj"]
 [ext_resource type="TileSet" uid="uid://p1w303aovx23" path="res://TileSets/Walls.tres" id="1_onm7x"]
 [ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="3_5m1bo"]
 [ext_resource type="PackedScene" uid="uid://dpqf5ourprosq" path="res://Characters/Player.tscn" id="3_m2g75"]
 [ext_resource type="Material" uid="uid://dgfkgd7h2luxt" path="res://Shaders/white_shader.tres" id="5_22wg6"]
+[ext_resource type="Script" path="res://Scenes/test_overlay_script.gd" id="5_dpo00"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_amos5"]
 viewport_path = NodePath("LitView")
@@ -99,11 +100,13 @@ texture = SubResource("ViewportTexture_dgvh5")
 position = Vector2(74, 108)
 texture = SubResource("ViewportTexture_p1s7y")
 
-[node name="litview_sprite" type="Sprite2D" parent="."]
+[node name="litview_sprite" type="Sprite2D" parent="." node_paths=PackedStringArray("lightmask_viewport")]
 material = ExtResource("1_fcroj")
 position = Vector2(121, 0)
 texture = SubResource("ViewportTexture_p1s7y")
 centered = false
+script = ExtResource("5_dpo00")
+lightmask_viewport = NodePath("../VisibilityViewport")
 
 [node name="VisibilityViewport" type="SubViewport" parent="."]
 transparent_bg = true

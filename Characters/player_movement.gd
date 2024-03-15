@@ -11,6 +11,8 @@ func _ready():
 	# Get level manager
 	if (get_node("/root").get_child(0) is LevelManager):
 		level_manager = get_node("/root").get_child(0)
+	else:
+		printerr(name + "can not find level manager")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
