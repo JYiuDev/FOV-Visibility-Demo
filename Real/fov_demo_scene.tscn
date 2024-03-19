@@ -29,12 +29,8 @@ layer_0/tile_data = PackedInt32Array(-131076, 3, 0, -65540, 3, 0, -4, 3, 0, 6553
 
 [node name="Entities" type="Node2D" parent="."]
 
-[node name="test_buddy" parent="Entities" node_paths=PackedStringArray("level_manager") instance=ExtResource("3_2v5nc")]
+[node name="test_buddy" parent="Entities" instance=ExtResource("3_2v5nc")]
 z_index = 100
-level_manager = NodePath("../..")
-
-[node name="RemoteTransform2D" parent="Entities/test_buddy/PlayerCamera" index="1"]
-remote_path = NodePath("../../../../Visibility_System/LightNormalView/Camera2D")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/test_buddy"]
 remote_path = NodePath("../../../Visibility_System/LitView/Camera2D")
