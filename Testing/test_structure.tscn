@@ -8,13 +8,13 @@
 [ext_resource type="Script" path="res://Scenes/Visibility_Manager.gd" id="3_vubwh"]
 [ext_resource type="Material" uid="uid://dgfkgd7h2luxt" path="res://Shaders/white_shader.tres" id="4_v6xru"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_46h1q"]
+viewport_path = NodePath("VisibilitySystem/Litview_Viewport")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_flq7c"]
 viewport_path = NodePath("VisibilitySystem/Lightmask_Viewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_k3am4"]
-viewport_path = NodePath("VisibilitySystem/Litview_Viewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_46h1q"]
 viewport_path = NodePath("VisibilitySystem/Litview_Viewport")
 
 [node name="Test_Structure" type="Node2D" node_paths=PackedStringArray("visibility_system")]
@@ -23,18 +23,6 @@ script = ExtResource("1_ygiq2")
 packed_map = ExtResource("2_6bvxe")
 unlit_color = Color(0.12549, 0.12549, 0.12549, 1)
 visibility_system = NodePath("VisibilitySystem")
-
-[node name="white_map_debug" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(76, 109)
-scale = Vector2(0.214844, 0.210648)
-texture = SubResource("ViewportTexture_flq7c")
-
-[node name="lit_map_debug" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(76, 160)
-scale = Vector2(0.214844, 0.210648)
-texture = SubResource("ViewportTexture_k3am4")
 
 [node name="test_buddy" parent="." instance=ExtResource("3_20r5f")]
 
@@ -67,6 +55,18 @@ material = ExtResource("3_pckwh")
 position = Vector2(180, 143)
 texture = SubResource("ViewportTexture_46h1q")
 script = ExtResource("3_melh0")
+
+[node name="white_map_debug" type="Sprite2D" parent="FOV_Overlay"]
+visible = false
+position = Vector2(-104, -34)
+scale = Vector2(0.214844, 0.210648)
+texture = SubResource("ViewportTexture_flq7c")
+
+[node name="lit_map_debug" type="Sprite2D" parent="FOV_Overlay"]
+visible = false
+position = Vector2(-104, 17)
+scale = Vector2(0.214844, 0.210648)
+texture = SubResource("ViewportTexture_k3am4")
 
 [editable path="test_buddy"]
 [editable path="test_buddy/Visibility"]

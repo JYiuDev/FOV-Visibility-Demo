@@ -18,4 +18,3 @@ func _ready():
 	var lightmask_texture:ViewportTexture = level_manager.visibility_system.lightmask_viewport.get_texture()
 	
 	material.set_shader_parameter("mask_texture", lightmask_texture)
-	print(material.get_shader_parameter("mask_texture"))
