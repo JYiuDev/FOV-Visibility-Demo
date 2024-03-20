@@ -33,6 +33,9 @@ Applying the same subviewport structure as our light normal map, we get another 
 To put this together, 
 
 ## Issues
-It's very inefficient if any light occluders has to move, interactable objects like doors or movable objects will have to exist in atleast 2 "worlds" and synchronize their transforms.
+### Dynamic physical objects
+It's very inefficient if any light occluders has to move, interactable objects like doors or movable objects will have to exist in atleast 2 "worlds" and synchronize their transform to complete the effect. 
+This issue stems from the method itself, as such it's advised to keep this issue in mind while deciding if this method can work for your game's scope.
 
-This seems like a bug with the current Godot, but sometimes when opening the the project the path to viewport on the filter shader gets changed for some reason. Resetting the node path to the correct node should fix it however it is not a permanent solution. Therefore we will manually set the path for shader's sampler2d at runtime for now.
+### Shader parameter bug
+During this project there were many instances of the FOV shader reporting an error as it has lost its NodePath parameter which seems to be a bug with the current Godot. Resetting the parameter to the correct node via editor only fixed the issue temporarily. As a workaround, we can have let the Visibility Manager set the correct parameter after initilization.
