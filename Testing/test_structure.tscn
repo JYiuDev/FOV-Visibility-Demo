@@ -25,16 +25,22 @@ unlit_color = Color(0.12549, 0.12549, 0.12549, 1)
 visibility_system = NodePath("VisibilitySystem")
 
 [node name="white_map_debug" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(76, 109)
 scale = Vector2(0.214844, 0.210648)
 texture = SubResource("ViewportTexture_flq7c")
 
 [node name="lit_map_debug" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(76, 160)
 scale = Vector2(0.214844, 0.210648)
 texture = SubResource("ViewportTexture_k3am4")
 
 [node name="test_buddy" parent="." instance=ExtResource("3_20r5f")]
+
+[node name="Camera2D" parent="test_buddy/PlayerCameras" index="0"]
+texture_filter = 3
+position_smoothing_speed = 1.0
 
 [node name="Overlay_Follow" type="RemoteTransform2D" parent="test_buddy"]
 remote_path = NodePath("../../FOV_Overlay")
