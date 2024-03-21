@@ -1,0 +1,129 @@
+[gd_scene load_steps=15 format=3 uid="uid://dttxw7s7ege3h"]
+
+[ext_resource type="TileSet" uid="uid://p1w303aovx23" path="res://TileMaps/TileSets/Walls.tres" id="1_uxujx"]
+[ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="2_l4a55"]
+[ext_resource type="PackedScene" uid="uid://dpqf5ourprosq" path="res://DemoSceneSmall/Characters/Player.tscn" id="3_wdqad"]
+[ext_resource type="Material" uid="uid://mtfnyovufh4c" path="res://Shaders/post_visibility_shader.tres" id="4_vypw1"]
+[ext_resource type="Script" path="res://Objects/VisibilitySystem/test_overlay_script.gd" id="5_f0f8e"]
+[ext_resource type="Material" uid="uid://dgfkgd7h2luxt" path="res://Shaders/white_shader.tres" id="6_xi32n"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_amos5"]
+viewport_path = NodePath("LitView")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0k7rh"]
+radius = 6.0
+
+[sub_resource type="Gradient" id="Gradient_4bqhm"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.655844)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rc8r4"]
+gradient = SubResource("Gradient_4bqhm")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dgvh5"]
+viewport_path = NodePath("VisibilityViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p1s7y"]
+viewport_path = NodePath("LitView")
+
+[sub_resource type="Gradient" id="Gradient_66pl4"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.12987)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7dapb"]
+gradient = SubResource("Gradient_66pl4")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="GameScene" type="Node"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-145, 51)
+texture = SubResource("ViewportTexture_amos5")
+centered = false
+
+[node name="LitView" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(384, 216)
+render_target_update_mode = 4
+
+[node name="TileMap" type="TileMap" parent="LitView"]
+tile_set = ExtResource("1_uxujx")
+format = 2
+layer_0/tile_data = PackedInt32Array(196617, 1, 16, 262153, 1, 17, 327689, 1, 17, 393225, 1, 17, 458761, 1, 17, 524297, 1, 18, 196618, 65537, 16, 262154, 3, 0, 327690, 3, 0, 393226, 3, 0, 458762, 3, 0, 524298, 65537, 18, 196619, 65537, 16, 262155, 3, 0, 393227, 3, 0, 458763, 3, 0, 524299, 65537, 18, 196620, 65537, 16, 262156, 3, 0, 327692, 3, 0, 393228, 3, 0, 458764, 3, 0, 524300, 65537, 18, 196621, 65537, 16, 262157, 3, 0, 327693, 3, 0, 393229, 3, 0, 458765, 3, 0, 524301, 65537, 18, 196622, 131073, 16, 262158, 131073, 17, 327694, 131073, 17, 393230, 131073, 17, 458766, 131073, 17, 524302, 131073, 18, 327691, 196609, 18)
+
+[node name="Cat" type="CharacterBody2D" parent="LitView"]
+position = Vector2(171, 72)
+collision_layer = 128
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="LitView/Cat"]
+texture = ExtResource("2_l4a55")
+region_enabled = true
+region_rect = Rect2(464, 112, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LitView/Cat"]
+shape = SubResource("CircleShape2D_0k7rh")
+debug_color = Color(0.890196, 0.258824, 0.517647, 0.419608)
+
+[node name="PlayerCharacter" parent="LitView" instance=ExtResource("3_wdqad")]
+position = Vector2(203, 109)
+
+[node name="PlayerSprite" parent="LitView/PlayerCharacter" index="0"]
+texture_filter = 1
+
+[node name="RemoteTransform2D" parent="LitView/PlayerCharacter/Visibility" index="0"]
+remote_path = NodePath("../../../../VisibilityViewport/PointLight2D2")
+
+[node name="PointLight2D" type="PointLight2D" parent="LitView/PlayerCharacter"]
+visible = false
+color = Color(1, 1, 0.278431, 1)
+energy = 2.87
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_rc8r4")
+texture_scale = 1.48
+
+[node name="debug_visiblity" type="Sprite2D" parent="."]
+position = Vector2(192, 108)
+texture = SubResource("ViewportTexture_dgvh5")
+
+[node name="debug_litview" type="Sprite2D" parent="."]
+position = Vector2(74, 108)
+texture = SubResource("ViewportTexture_p1s7y")
+
+[node name="litview_sprite" type="Sprite2D" parent="." node_paths=PackedStringArray("lightmask_viewport")]
+material = ExtResource("4_vypw1")
+position = Vector2(121, 0)
+texture = SubResource("ViewportTexture_p1s7y")
+centered = false
+script = ExtResource("5_f0f8e")
+lightmask_viewport = NodePath("../VisibilityViewport")
+
+[node name="VisibilityViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(384, 216)
+render_target_update_mode = 4
+
+[node name="VisibiltyMap" type="TileMap" parent="VisibilityViewport"]
+material = ExtResource("6_xi32n")
+tile_set = ExtResource("1_uxujx")
+format = 2
+layer_0/tile_data = PackedInt32Array(196617, 1, 16, 262153, 1, 17, 327689, 1, 17, 393225, 1, 17, 458761, 1, 17, 524297, 1, 18, 196618, 65537, 16, 262154, 3, 0, 327690, 3, 0, 458762, 3, 0, 524298, 65537, 18, 196619, 65537, 16, 262155, 3, 0, 393227, 3, 0, 458763, 3, 0, 524299, 65537, 18, 196620, 65537, 16, 262156, 3, 0, 327692, 3, 0, 393228, 3, 0, 458764, 3, 0, 524300, 65537, 18, 196621, 65537, 16, 262157, 3, 0, 327693, 3, 0, 393229, 3, 0, 458765, 3, 0, 524301, 65537, 18, 196622, 131073, 16, 262158, 131073, 17, 327694, 131073, 17, 393230, 131073, 17, 458766, 131073, 17, 524302, 131073, 18, 327691, 196609, 18, 393226, 3, 0)
+
+[node name="PointLight2D2" type="PointLight2D" parent="VisibilityViewport"]
+position = Vector2(203, 109)
+energy = 2.55
+blend_mode = 1
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_7dapb")
+
+[editable path="LitView/PlayerCharacter"]

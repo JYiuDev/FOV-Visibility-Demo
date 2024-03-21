@@ -5,7 +5,7 @@ Handle player movement
 
 @export var speed = 50
 var level_manager: LevelManager
-var torch_packed  = preload("res://Objects/Fire/torch.tscn")
+var torch_packed  = preload("res://Objects/Torch/torch.tscn")
 
 func _ready():
 	# Get level manager

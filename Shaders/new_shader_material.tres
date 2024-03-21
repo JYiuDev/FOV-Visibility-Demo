@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bqr4krg75oram"]
 
-[ext_resource type="Shader" path="res://Sfilter_shader_demo.gdshader" id="1_sevlm"]
+[ext_resource type="Shader" path="res://Shaders/FOV_Demo/Sfilter_shader_demo.gdshader" id="1_sevlm"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_so7xk"]
 viewport_path = NodePath("Visibility_System/LightNormalView")

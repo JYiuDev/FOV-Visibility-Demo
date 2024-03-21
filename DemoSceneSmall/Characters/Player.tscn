@@ -1,11 +1,26 @@
 [gd_scene load_steps=5 format=3 uid="uid://dpqf5ourprosq"]
 
-[ext_resource type="Script" path="res://Characters/player_movement.gd" id="1_2wd7b"]
+[ext_resource type="Script" path="res://DemoSceneSmall/Characters/player_movement.gd" id="1_2wd7b"]
 [ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="1_536q7"]
-[ext_resource type="Script" path="res://Characters/player_visibility.gd" id="3_flcc2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hxetr"]
 radius = 6.0
+
+[sub_resource type="GDScript" id="GDScript_7rt5y"]
+script/source = "extends Node
+
+@onready var remote_transform: RemoteTransform2D = $RemoteTransform2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 script = ExtResource("1_2wd7b")
@@ -20,6 +35,6 @@ region_rect = Rect2(288, 113, 16, 16)
 shape = SubResource("CircleShape2D_hxetr")
 
 [node name="Visibility" type="Node2D" parent="."]
-script = ExtResource("3_flcc2")
+script = SubResource("GDScript_7rt5y")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Visibility"]

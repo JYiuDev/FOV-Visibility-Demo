@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://clt8gdlwlwuph"]
 
-[ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="1_gwoal"]
-[ext_resource type="Script" path="res://Real/FluctuatingLight.gd" id="1_ogbyd"]
-[ext_resource type="PackedScene" uid="uid://hieif04p7822" path="res://Objects/Visibility_Node.tscn" id="3_vhlvu"]
+[ext_resource type="Script" path="res://Objects/Torch/FluctuatingLight.gd" id="1_2oxgh"]
+[ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="2_c3unl"]
+[ext_resource type="PackedScene" uid="uid://hieif04p7822" path="res://Objects/VisibilitySystem/Visibility_Node.tscn" id="3_ccf4t"]
 
 [sub_resource type="Gradient" id="Gradient_l4w3k"]
 offsets = PackedFloat32Array(0, 0.642857)
@@ -24,20 +24,20 @@ radius = 7.07107
 color = Color(1, 0.329412, 0.211765, 1)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_teuum")
-script = ExtResource("1_ogbyd")
+script = ExtResource("1_2oxgh")
 defualt_energy = 0.8
 default_texture_scale = 0.8
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_gwoal")
+texture = ExtResource("2_c3unl")
 region_enabled = true
 region_rect = Rect2(224, 160, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_maigr")
 
-[node name="Visibility" parent="." instance=ExtResource("3_vhlvu")]
+[node name="Visibility" parent="." instance=ExtResource("3_ccf4t")]
 light_texture_scale = 1.0
 max_texture_scale = 3.0
 max_fuel_time = 20.0

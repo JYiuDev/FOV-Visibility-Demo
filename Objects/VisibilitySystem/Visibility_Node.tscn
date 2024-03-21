@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://hieif04p7822"]
 
-[ext_resource type="Script" path="res://VisionSource/lightmask_light.gd" id="1_qqn6a"]
+[ext_resource type="Script" path="res://Objects/VisionSource/lightmask_light.gd" id="1_qqn6a"]
 
 [node name="VisibilityNode" type="Node2D"]
 script = ExtResource("1_qqn6a")
