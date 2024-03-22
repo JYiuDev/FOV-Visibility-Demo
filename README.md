@@ -25,12 +25,35 @@ We will then translate this into a black and white normal map so it is easer to 
 As shown, this setup generates a 1:1 image of the viewport where the dark areas represents areas that are lit and bright areas being unlit.
 
 ## Filtering unlit areas
-Now we just need to have the regular world map and filter out the corresponding pixels that are dark on the white normal map to produce the effect we wanted.
 
-Applying the same subviewport structure as our light normal map, we get another 1:1 image of the viewport, using the above mentioned filter method, the unlit areas will be filtered to the color value that we desire. Here we converted unlit areas to transparent.
+Now we need to have the regular world map and filter out the corresponding pixels that are dark on the white normal map to produce the effect we wanted. The following is a simple shader script that takes in the white mask texture and uses it to convert our FOV overlay image.
+
+```
+shader_type canvas_item;
+uniform sampler2D mask_texture;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	vec4 mask = texture(mask_texture, UV);
+	
+	//If mask texture's pixel is white (not visible), make that pixel transparent
+	if(mask.r > 0.5) {
+		color.a = 1.0 - mask.r;
+	}
+	COLOR = color;
+}
+```
+
+![Filtered texture](/mask_texture_effect.png)
+
+The result is the un-visible areas will be rendered as transparent, which allows us to put something under this image such as a black background or a darkend copy of the tilemap to represent the areas out of vision.
+
+![Filtered texture](/transparent_effect.png)
 
 ## Structure
-To put this together, 
+To put this together, we will have a VisibilitySystem Node which contains both the white shader subviewport and the regular view subviewport. Since we will be using exact copies of the same map, it'll be easier to edit or swap out the tile map if we create the tilemap at runtime.
+
+At the top level, we have the Level Manager object which also contains the game world that the player physically exists in and also serves as the un-visible part of the rendered image.
 
 ## Issues
 ### Dynamic physical objects
