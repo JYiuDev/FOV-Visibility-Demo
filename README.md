@@ -26,7 +26,9 @@ As shown, this setup generates a 1:1 image of the viewport where the dark areas 
 
 ## Filtering unlit areas
 
-Now we need to have the regular world map and filter out the corresponding pixels that are dark on the white normal map to produce the effect we wanted. The following is a simple shader script that takes in the white mask texture and uses it to convert our FOV overlay image.
+Now we need to have the regular world map and filter out the corresponding pixels that are dark on the white normal map to produce the effect we wanted. 
+
+The following is a simple shader script that takes in the white mask texture and uses it to convert our FOV overlay image.
 
 ```
 shader_type canvas_item;
@@ -44,16 +46,20 @@ void fragment() {
 }
 ```
 
+The preview on godot's editor shows that the unlit areas are transparent:
+
 ![Filtered texture](/mask_texture_effect.png)
 
 The result is the un-visible areas will be rendered as transparent, which allows us to put something under this image such as a black background or a darkend copy of the tilemap to represent the areas out of vision.
 
-![Filtered texture](/transparent_effect.png)
+![Filtered texture](/FOV_layers.gif)
 
 ## Structure
-To put this together, we will have a VisibilitySystem Node which contains both the white shader subviewport and the regular view subviewport. Since we will be using exact copies of the same map, it'll be easier to edit or swap out the tile map if we create the tilemap at runtime.
-
 At the top level, we have the Level Manager object which also contains the game world that the player physically exists in and also serves as the un-visible part of the rendered image.
+
+The VisibilitySystem Node contains both the white shader subviewport and the regular view subviewport. Since we will be using exact copies of the same map, it'll be easier to edit or swap out the tile map if we create the tilemap at runtime.
+
+
 
 ## Issues
 ### Dynamic physical objects
