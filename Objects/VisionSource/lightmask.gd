@@ -5,7 +5,6 @@ class_name  WhiteLightMask
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#light = $PointLight2D
 	
 	pass
 

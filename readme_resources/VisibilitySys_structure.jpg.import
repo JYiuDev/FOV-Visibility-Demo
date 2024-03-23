@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cghv1cysos1gq"
-path="res://.godot/imported/mask_texture_effect.png-0310cfab9eb6f69119139b5352451394.ctex"
+uid="uid://cyevq4d41jgwx"
+path="res://.godot/imported/VisibilitySys_structure.jpg-106f31f6719b77a76699707f96e31b9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mask_texture_effect.png"
-dest_files=["res://.godot/imported/mask_texture_effect.png-0310cfab9eb6f69119139b5352451394.ctex"]
+source_file="res://readme_resources/VisibilitySys_structure.jpg"
+dest_files=["res://.godot/imported/VisibilitySys_structure.jpg-106f31f6719b77a76699707f96e31b9b.ctex"]
 
 [params]
 

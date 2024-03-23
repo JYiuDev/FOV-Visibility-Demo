@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyubbtan7rtut"
-path="res://.godot/imported/PointLight_Occlusion.png-95825195d0344d40a0f4716f79fcca47.ctex"
+uid="uid://danvqetjhxga6"
+path="res://.godot/imported/White_Normal_Map.png-6db5602a3859a6ca99ecc72b2a45c21f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PointLight_Occlusion.png"
-dest_files=["res://.godot/imported/PointLight_Occlusion.png-95825195d0344d40a0f4716f79fcca47.ctex"]
+source_file="res://readme_resources/White_Normal_Map.png"
+dest_files=["res://.godot/imported/White_Normal_Map.png-6db5602a3859a6ca99ecc72b2a45c21f.ctex"]
 
 [params]
 

@@ -4,7 +4,7 @@ extends Node2D
 Instantiating masking light and set up remote transform to it
 """
 const myMath = preload("res://Libraries/my_math.gd")
-var packed_lightmask = preload("res://VisionSource/lightmask.tscn")
+var packed_lightmask = preload("res://Objects/VisionSource/lightmask.tscn")
 
 var level_manager:LevelManager
 var visibility_system: VisibilityManager

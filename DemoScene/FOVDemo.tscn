@@ -13,7 +13,7 @@ viewport_path = NodePath("VisibilitySystem/Litview_Viewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_0svr6"]
 viewport_path = NodePath("VisibilitySystem/Lightmask_Viewport")
 
-[node name="Fov_demo" type="Node2D" node_paths=PackedStringArray("visibility_system")]
+[node name="Fov_demo(level_manager)" type="Node2D" node_paths=PackedStringArray("visibility_system")]
 texture_filter = 1
 script = ExtResource("1_btel2")
 packed_map = ExtResource("2_efr01")
@@ -23,25 +23,23 @@ visibility_system = NodePath("VisibilitySystem")
 [node name="Player_World" type="Node2D" parent="."]
 texture_filter = 1
 
-[node name="test_buddy" parent="Player_World" instance=ExtResource("3_4urpy")]
+[node name="Player" parent="Player_World" instance=ExtResource("3_4urpy")]
 speed = 25
 
-[node name="Visibility" parent="Player_World/test_buddy" index="0"]
-max_texture_scale = 1.0
-min_texture_scale = 0.4
+[node name="Visibility" parent="Player_World/Player" index="0"]
+max_texture_scale = 2.0
+min_texture_scale = 0.6
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player_World/test_buddy"]
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Player_World/Player"]
+remote_path = NodePath("../../FOV_overlay")
 
-[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Player_World/test_buddy"]
-remote_path = NodePath("../../Post_Visibility_View")
-
-[node name="Post_Visibility_View" type="Sprite2D" parent="Player_World"]
+[node name="FOV_overlay" type="Sprite2D" parent="Player_World"]
 texture_filter = 1
 material = ExtResource("4_epr34")
 position = Vector2(180, 143)
 texture = SubResource("ViewportTexture_3lqnf")
 
-[node name="debug_lightmask_map" type="Sprite2D" parent="Player_World/Post_Visibility_View"]
+[node name="debug_lightmask_map" type="Sprite2D" parent="Player_World/FOV_overlay"]
 texture_filter = 1
 position = Vector2(-153, -63)
 scale = Vector2(0.1, 0.1)
@@ -63,5 +61,5 @@ transparent_bg = true
 size = Vector2i(384, 216)
 render_target_update_mode = 4
 
-[editable path="Player_World/test_buddy"]
-[editable path="Player_World/test_buddy/Visibility"]
+[editable path="Player_World/Player"]
+[editable path="Player_World/Player/Visibility"]

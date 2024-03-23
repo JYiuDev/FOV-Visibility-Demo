@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dttxw7s7ege3h"]
+[gd_scene load_steps=15 format=3 uid="uid://dttxw7s7ege3h"]
 
 [ext_resource type="TileSet" uid="uid://p1w303aovx23" path="res://TileMaps/TileSets/Walls.tres" id="1_uxujx"]
 [ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="2_l4a55"]
@@ -6,6 +6,9 @@
 [ext_resource type="Material" uid="uid://mtfnyovufh4c" path="res://Shaders/post_visibility_shader.tres" id="4_vypw1"]
 [ext_resource type="Script" path="res://Objects/VisibilitySystem/test_overlay_script.gd" id="5_f0f8e"]
 [ext_resource type="Material" uid="uid://dgfkgd7h2luxt" path="res://Shaders/white_shader.tres" id="6_xi32n"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_amos5"]
+viewport_path = NodePath("LitView")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0k7rh"]
 radius = 6.0
@@ -42,19 +45,10 @@ viewport_path = NodePath("LitView")
 
 [node name="GameScene" type="Node"]
 
-[node name="TileMap2" type="TileMap" parent="."]
-self_modulate = Color(0.12549, 0.12549, 0.12549, 1)
-position = Vector2(135, 0)
-tile_set = ExtResource("1_uxujx")
-format = 2
-layer_0/tile_data = PackedInt32Array(196617, 1, 16, 262153, 1, 17, 327689, 1, 17, 393225, 1, 17, 458761, 1, 17, 524297, 1, 18, 196618, 65537, 16, 262154, 3, 0, 327690, 3, 0, 393226, 3, 0, 458762, 3, 0, 524298, 65537, 18, 196619, 65537, 16, 262155, 3, 0, 393227, 3, 0, 458763, 3, 0, 524299, 65537, 18, 196620, 65537, 16, 262156, 3, 0, 327692, 3, 0, 393228, 3, 0, 458764, 3, 0, 524300, 65537, 18, 196621, 65537, 16, 262157, 3, 0, 327693, 3, 0, 393229, 3, 0, 458765, 3, 0, 524301, 65537, 18, 196622, 131073, 16, 262158, 131073, 17, 327694, 131073, 17, 393230, 131073, 17, 458766, 131073, 17, 524302, 131073, 18, 327691, 196609, 18)
-
-[node name="TileMap3" type="TileMap" parent="."]
-self_modulate = Color(0.12549, 0.12549, 0.12549, 1)
-position = Vector2(-5, 0)
-tile_set = ExtResource("1_uxujx")
-format = 2
-layer_0/tile_data = PackedInt32Array(196617, 1, 16, 262153, 1, 17, 327689, 1, 17, 393225, 1, 17, 458761, 1, 17, 524297, 1, 18, 196618, 65537, 16, 262154, 3, 0, 327690, 3, 0, 393226, 3, 0, 458762, 3, 0, 524298, 65537, 18, 196619, 65537, 16, 262155, 3, 0, 393227, 3, 0, 458763, 3, 0, 524299, 65537, 18, 196620, 65537, 16, 262156, 3, 0, 327692, 3, 0, 393228, 3, 0, 458764, 3, 0, 524300, 65537, 18, 196621, 65537, 16, 262157, 3, 0, 327693, 3, 0, 393229, 3, 0, 458765, 3, 0, 524301, 65537, 18, 196622, 131073, 16, 262158, 131073, 17, 327694, 131073, 17, 393230, 131073, 17, 458766, 131073, 17, 524302, 131073, 18, 327691, 196609, 18)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(117, -3)
+texture = SubResource("ViewportTexture_amos5")
+centered = false
 
 [node name="LitView" type="SubViewport" parent="."]
 transparent_bg = true
@@ -116,26 +110,16 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_7dapb")
 
 [node name="debug_visiblity" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(192, 108)
 texture = SubResource("ViewportTexture_dgvh5")
 
 [node name="debug_litview" type="Sprite2D" parent="."]
-position = Vector2(-134, 192)
+position = Vector2(74, 108)
 texture = SubResource("ViewportTexture_p1s7y")
-centered = false
 
 [node name="litview_sprite" type="Sprite2D" parent="." node_paths=PackedStringArray("lightmask_viewport")]
 material = ExtResource("4_vypw1")
-position = Vector2(-131, 0)
-texture = SubResource("ViewportTexture_p1s7y")
-centered = false
-script = ExtResource("5_f0f8e")
-lightmask_viewport = NodePath("../VisibilityViewport")
-
-[node name="litview_sprite2" type="Sprite2D" parent="." node_paths=PackedStringArray("lightmask_viewport")]
-material = ExtResource("4_vypw1")
-position = Vector2(135, 0)
+position = Vector2(121, 0)
 texture = SubResource("ViewportTexture_p1s7y")
 centered = false
 script = ExtResource("5_f0f8e")
