@@ -5,7 +5,7 @@ This project aiming to explore and learn about the implementatiing visibility me
 The inspiration and implementation of this project is greatly credited to [Godot 4 visibility mask tutorial redux.](https://youtu.be/iKRJqx9KCJU?si=kKWFoyubXUI5EA7h) by youtube channel "Corey Codes". 
 
 ## The gist of it
-![General concept showcase](/concept.gif)
+![General concept showcase](/readme_resources/concept.gif)
 The concept of this implementation can be broken down to two parts:
 
 - Generating a normal map which represents lit and unlit areas of the game world
@@ -14,13 +14,13 @@ The concept of this implementation can be broken down to two parts:
 ## Creating the normal map
 To create the desired normal map, this project will rely on Godot's inherent lighting and occlusion system to generate the lit and unlit areas of light sources. 
 
-![PointLight2D + Occlusion showcase](/PointLight_Occlusion.png)
+![PointLight2D + Occlusion showcase](/readme_resources/PointLight_Occlusion.png)
 
 By attaching a PointLight2D node on the player and adding light occlusion areas for the enviornment. Light will originate from the character in the shape of its texture.
 
 We will then translate this into a black and white normal map so it is easer to work with. This is done by duplicating the world map into a subviewport and rendering the viewport texture with a white shader, then set our PointLight2D's blendmode to subtract from the light values.
 
-![Normal map](/White_Normal_Map.png)
+![Normal map](/readme_resources/White_Normal_Map.png)
 
 As shown, this setup generates a 1:1 image of the viewport where the dark areas represents areas that are lit and bright areas being unlit.
 
@@ -48,16 +48,26 @@ void fragment() {
 
 The preview on godot's editor shows that the unlit areas are transparent:
 
-![Filtered texture](/mask_texture_effect.png)
+![Filtered texture](/readme_resources/mask_texture_effect.png)
 
 The result is the un-visible areas will be rendered as transparent, which allows us to put something under this image such as a black background or a darkend copy of the tilemap to represent the areas out of vision.
 
-![Filtered texture](/FOV_layers.gif)
+![Layer_structure](/readme_resources/FOV_layers.gif)
 
 ## Structure
-At the top level, we have the Level Manager object which also contains the game world that the player physically exists in and also serves as the un-visible part of the rendered image.
+At the top level, we have the Level Manager object which also contains the game world that the player physically exists in and also serves as the un-visible/darkened background component of the rendered product.
+
+![Level_manager](/readme_resources/demo_structure.jpg)
 
 The VisibilitySystem Node contains both the white shader subviewport and the regular view subviewport. Since we will be using exact copies of the same map, it'll be easier to edit or swap out the tile map if we create the tilemap at runtime.
+
+![Visibility_sys](/readme_resources/VisibilitySys_structure.jpg)
+
+## Application
+
+### Multiple vision source
+With this implementation, creating additional vision sources is quite simple; By setting up the same lighting as the player in the white shader game world, we can create visible areas that are independant for the player character.
+
 
 
 
@@ -68,3 +78,4 @@ This issue stems from the method itself, as such it's advised to keep this issue
 
 ### Shader parameter bug
 During this project there were many instances of the FOV shader reporting an error as it has lost its NodePath parameter which seems to be a bug with the current Godot. Resetting the parameter to the correct node via editor only fixed the issue temporarily. As a workaround, we can have let the Visibility Manager set the correct parameter after initilization.
+![Shader_bug](/readme_resources/shader_bug.jpg)
