@@ -1,14 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dttxw7s7ege3h"]
+[gd_scene load_steps=13 format=3 uid="uid://dttxw7s7ege3h"]
 
 [ext_resource type="TileSet" uid="uid://p1w303aovx23" path="res://TileMaps/TileSets/Walls.tres" id="1_uxujx"]
-[ext_resource type="Texture2D" uid="uid://dbrl6kk27upwb" path="res://Import_Assets/kenney_1-bit-pack/Tilesheet/colored-transparent_packed.png" id="2_l4a55"]
+[ext_resource type="PackedScene" uid="uid://cowv5owi22rwb" path="res://Objects/TestCat/test_cat.tscn" id="2_ugeqg"]
 [ext_resource type="PackedScene" uid="uid://dpqf5ourprosq" path="res://DemoSceneSmall/Characters/Player.tscn" id="3_wdqad"]
 [ext_resource type="Material" uid="uid://mtfnyovufh4c" path="res://Shaders/post_visibility_shader.tres" id="4_vypw1"]
 [ext_resource type="Script" path="res://Objects/VisibilitySystem/test_overlay_script.gd" id="5_f0f8e"]
 [ext_resource type="Material" uid="uid://dgfkgd7h2luxt" path="res://Shaders/white_shader.tres" id="6_xi32n"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0k7rh"]
-radius = 6.0
 
 [sub_resource type="Gradient" id="Gradient_4bqhm"]
 interpolation_mode = 1
@@ -66,19 +63,7 @@ tile_set = ExtResource("1_uxujx")
 format = 2
 layer_0/tile_data = PackedInt32Array(196617, 1, 16, 262153, 1, 17, 327689, 1, 17, 393225, 1, 17, 458761, 1, 17, 524297, 1, 18, 196618, 65537, 16, 262154, 3, 0, 327690, 3, 0, 393226, 3, 0, 458762, 3, 0, 524298, 65537, 18, 196619, 65537, 16, 262155, 3, 0, 393227, 3, 0, 458763, 3, 0, 524299, 65537, 18, 196620, 65537, 16, 262156, 3, 0, 327692, 3, 0, 393228, 3, 0, 458764, 3, 0, 524300, 65537, 18, 196621, 65537, 16, 262157, 3, 0, 327693, 3, 0, 393229, 3, 0, 458765, 3, 0, 524301, 65537, 18, 196622, 131073, 16, 262158, 131073, 17, 327694, 131073, 17, 393230, 131073, 17, 458766, 131073, 17, 524302, 131073, 18, 327691, 196609, 18)
 
-[node name="Cat" type="CharacterBody2D" parent="LitView"]
-position = Vector2(171, 72)
-collision_layer = 128
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="LitView/Cat"]
-texture = ExtResource("2_l4a55")
-region_enabled = true
-region_rect = Rect2(464, 112, 16, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LitView/Cat"]
-shape = SubResource("CircleShape2D_0k7rh")
-debug_color = Color(0.890196, 0.258824, 0.517647, 0.419608)
+[node name="Cat" parent="LitView" instance=ExtResource("2_ugeqg")]
 
 [node name="PlayerCharacter" parent="LitView" instance=ExtResource("3_wdqad")]
 position = Vector2(203, 109)

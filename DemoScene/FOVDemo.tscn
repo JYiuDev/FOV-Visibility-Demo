@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://blfpq7iq5cakf"]
+[gd_scene load_steps=10 format=3 uid="uid://blfpq7iq5cakf"]
 
 [ext_resource type="Script" path="res://Objects/LevelManager/level_manager.gd" id="1_btel2"]
 [ext_resource type="PackedScene" uid="uid://c824kg12ovhn3" path="res://TileMaps/forest.tscn" id="2_efr01"]
 [ext_resource type="PackedScene" uid="uid://oqmumoi2jlcn" path="res://DemoScene/Player/test_buddy.tscn" id="3_4urpy"]
 [ext_resource type="Material" uid="uid://cnt6kxmxebvki" path="res://Shaders/FOV_Demo/Demo_use_shader.tres" id="4_epr34"]
 [ext_resource type="Script" path="res://Objects/VisibilitySystem/Visibility_Manager.gd" id="5_62te6"]
+[ext_resource type="PackedScene" uid="uid://cowv5owi22rwb" path="res://Objects/TestCat/test_cat.tscn" id="5_idphj"]
 [ext_resource type="Material" uid="uid://dgfkgd7h2luxt" path="res://Shaders/white_shader.tres" id="6_xtaxd"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3lqnf"]
@@ -17,8 +18,13 @@ viewport_path = NodePath("VisibilitySystem/Lightmask_Viewport")
 texture_filter = 1
 script = ExtResource("1_btel2")
 packed_map = ExtResource("2_efr01")
-unlit_color = Color(0.12549, 0.12549, 0.12549, 1)
+unlit_color = Color(0.0941176, 0.129412, 0.239216, 1)
 visibility_system = NodePath("VisibilitySystem")
+
+[node name="Cat" parent="." instance=ExtResource("5_idphj")]
+z_index = 1
+texture_filter = 1
+position = Vector2(85, 248)
 
 [node name="Player_World" type="Node2D" parent="."]
 texture_filter = 1

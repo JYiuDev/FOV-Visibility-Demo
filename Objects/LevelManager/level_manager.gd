@@ -20,7 +20,7 @@ func _ready():
 	var bg_map= packed_map.instantiate() 
 	add_child(bg_map)
 	bg_map as TileMap
-	bg_map.set_self_modulate(Color.DIM_GRAY)
+	bg_map.set_self_modulate(unlit_color)
 	bg_map.name = "bg_map"
 	bg_map.set_z_index(-1)
 
