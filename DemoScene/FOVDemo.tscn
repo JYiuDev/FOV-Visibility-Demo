@@ -21,19 +21,15 @@ packed_map = ExtResource("2_efr01")
 unlit_color = Color(0.0941176, 0.129412, 0.239216, 1)
 visibility_system = NodePath("VisibilitySystem")
 
-[node name="Cat" parent="." instance=ExtResource("5_idphj")]
-z_index = 1
-texture_filter = 1
-position = Vector2(85, 248)
-
 [node name="Player_World" type="Node2D" parent="."]
 texture_filter = 1
 
 [node name="Player" parent="Player_World" instance=ExtResource("3_4urpy")]
+position = Vector2(-222, 240)
 speed = 25
 
 [node name="Visibility" parent="Player_World/Player" index="0"]
-max_texture_scale = 2.0
+max_texture_scale = 1.0
 min_texture_scale = 0.6
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Player_World/Player"]
@@ -42,7 +38,7 @@ remote_path = NodePath("../../FOV_overlay")
 [node name="FOV_overlay" type="Sprite2D" parent="Player_World"]
 texture_filter = 1
 material = ExtResource("4_epr34")
-position = Vector2(180, 143)
+position = Vector2(-222, 240)
 texture = SubResource("ViewportTexture_3lqnf")
 
 [node name="debug_lightmask_map" type="Sprite2D" parent="Player_World/FOV_overlay"]
@@ -66,6 +62,41 @@ render_target_update_mode = 4
 transparent_bg = true
 size = Vector2i(384, 216)
 render_target_update_mode = 4
+
+[node name="Cat" parent="VisibilitySystem/Litview_Viewport" instance=ExtResource("5_idphj")]
+z_index = 1
+texture_filter = 1
+position = Vector2(-224, 189)
+
+[node name="Cat2" parent="VisibilitySystem/Litview_Viewport" instance=ExtResource("5_idphj")]
+z_index = 1
+texture_filter = 1
+position = Vector2(-188, 204)
+
+[node name="Cat3" parent="VisibilitySystem/Litview_Viewport" instance=ExtResource("5_idphj")]
+z_index = 1
+texture_filter = 1
+position = Vector2(-265, 205)
+
+[node name="Cat4" parent="VisibilitySystem/Litview_Viewport" instance=ExtResource("5_idphj")]
+z_index = 1
+texture_filter = 1
+position = Vector2(-285, 248)
+
+[node name="Cat5" parent="VisibilitySystem/Litview_Viewport" instance=ExtResource("5_idphj")]
+z_index = 1
+texture_filter = 1
+position = Vector2(-244, 285)
+
+[node name="Cat6" parent="VisibilitySystem/Litview_Viewport" instance=ExtResource("5_idphj")]
+z_index = 1
+texture_filter = 1
+position = Vector2(-198, 284)
+
+[node name="Cat7" parent="VisibilitySystem/Litview_Viewport" instance=ExtResource("5_idphj")]
+z_index = 1
+texture_filter = 1
+position = Vector2(-170, 246)
 
 [editable path="Player_World/Player"]
 [editable path="Player_World/Player/Visibility"]
