@@ -59,23 +59,49 @@ At the top level, we have the Level Manager object which also contains the game 
 
 ![Level_manager](/readme_resources/demo_structure.jpg)
 
-The VisibilitySystem Node contains both the white shader subviewport and the regular view subviewport. Since we will be using exact copies of the same map, it'll be easier to edit or swap out the tile map if we create the tilemap at runtime.
+The VisibilitySystem Node contains both the white shader subviewport and the regular view subviewport. Since we will be using exact copies of the same map, it'll be easier to edit or swap out the tile map if we initialize the tilemap at runtime.
 
 ![Visibility_sys](/readme_resources/VisibilitySys_structure.jpg)
 
 ## Application
-
-### Multiple vision source
-With this implementation, creating additional vision sources is quite simple; By setting up the same lighting as the player in the white shader game world, we can create visible areas that are independant for the player character.
-
+### Darkwood-like FOV mechanic
+As per the aim of this demo, it is possible to apply this implementation and achieve a very similar effect to Darkwoods FOV system. Although according the [developers official AMA on reddit](https://www.reddit.com/r/IAmA/comments/14m0wg0/comment/jpz75o1/?utm_source=share&utm_medium=web2x&context=3) this implementation differs from the method they have used.
 
 
+### Additional Vision areas
+With this implementation, creating additional vision areas is quite simple; By setting up the same lighting as the player in the white shader world, we can create visible areas that are independant for the player character. This can open up new gameplay designs and experiences compare to its insipiration.
 
 ## Issues
+
 ### Dynamic physical objects
 It's very inefficient if any light occluders has to move, interactable objects like doors or movable objects will have to exist in atleast 2 "worlds" and synchronize their transform to complete the effect. 
 This issue stems from the method itself, as such it's advised to keep this issue in mind while deciding if this method can work for your game's scope.
 
 ### Shader parameter bug
-During this project there were many instances of the FOV shader reporting an error as it has lost its NodePath parameter which seems to be a bug with the current Godot. Resetting the parameter to the correct node via editor only fixed the issue temporarily. As a workaround, we can have let the Visibility Manager set the correct parameter after initilization.
+During this project there were many instances of the FOV shader reporting an error as it has lost its NodePath parameter which seems to be a bug with the current Godot. Resetting the parameter to the correct node via editor only fixed the issue temporarily. 
+
 ![Shader_bug](/readme_resources/shader_bug.jpg)
+
+As a workaround, we can set the shader parameter at run time using the ```set_shader_parameter()``` method
+
+```
+class_name FOVOverlay
+
+"""
+Set parameter to own shader at run time
+"""
+
+var level_manager:LevelManager
+
+func _ready():
+	# Get level manager
+	if (get_node("/root").get_child(0) is LevelManager):
+		level_manager = get_node("/root").get_child(0)
+	else:
+		printerr(name + "can not find level manager")
+
+	# Get ViewportTexture reference
+	var lightmask_texture:ViewportTexture = level_manager.visibility_system.lightmask_viewport.get_texture()
+	
+	material.set_shader_parameter("mask_texture", lightmask_texture)
+```
