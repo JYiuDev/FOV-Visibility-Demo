@@ -71,11 +71,18 @@ As per the aim of this demo, it is possible to apply this implementation and ach
 ### Additional Vision areas
 With this implementation, creating additional vision areas is quite simple; By setting up the same lighting as the player in the white shader world, we can create visible areas that are independant for the player character. This can open up new gameplay designs and experiences compare to its insipiration.
 
+![Demonstration of multiple vision source](/readme_resources/Multiple_vision_demo.gif)
+
+
 ## Issues
 
 ### Dynamic physical objects
 It's very inefficient if any light occluders has to move, interactable objects like doors or movable objects will have to exist in atleast 2 "worlds" and synchronize their transform to complete the effect. 
 This issue stems from the method itself, as such it's advised to keep this issue in mind while deciding if this method can work for your game's scope.
+
+(Example of dynamic light occlusion in Darkwood)
+
+![Example of dynamic light occlusion in Darkwood](/readme_resources/moving_occluder.gif)
 
 ### Shader parameter bug
 During this project there were many instances of the FOV shader reporting an error as it has lost its NodePath parameter which seems to be a bug with the current Godot. Resetting the parameter to the correct node via editor only fixed the issue temporarily. 
